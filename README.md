@@ -1,7 +1,7 @@
-# AwesomeSnailsOsint
+# AwesomeSnailOSINT
 A Great Collection of OSINT tools, By PT-Snails.
 
-``
+```
 
 
 ⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⢀⣀⣀⣀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀
@@ -32,7 +32,7 @@ A Great Collection of OSINT tools, By PT-Snails.
 
 ░█▀▀█ ─█▀▀█ ░█▀▀█ ░█▀▀▀ 
 ░█▄▄▀ ░█▄▄█ ░█─── ░█▀▀▀ 
-░█─░█ ░█─░█ ░█▄▄█ ░█▄▄▄⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠉⠉⠉⠁⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀
+░█─░█ ░█─░█ ░█▄▄█ ░█▄▄▄
 ```
 ---
 
@@ -63,6 +63,7 @@ A Great Collection of OSINT tools, By PT-Snails.
 - [ID Generators](#id-generators)
 - [Crypto](#crypto)
 - [Research and Investigative Tools](#research-and-investigative-tools)
+- [Search Engine Dorks](#search-engine-dorks)
 - [Exploits](#exploits)
 - [Others](#others)
 - [Deep & Dark Web](#deep--dark-web)
@@ -73,7 +74,6 @@ A Great Collection of OSINT tools, By PT-Snails.
 - [Materials / MAC](#materials--mac)
 - [Default Passwords](#default-passwords)
 - [Document Validation](#document-validation)
-- [Note Capture / Screenshot Tools](#note-capture--screenshot-tools)
 - [Training and Learning](#training-and-learning)
 - [Additional Awesome Repositories](#additional-awesome-repositories)
 
@@ -89,7 +89,6 @@ A Great Collection of OSINT tools, By PT-Snails.
 - [Threatcrowd](https://www.threatcrowd.org)
 - [MXtoolbox](https://mxtoolbox.com)
 - [MalwareURL](https://www.malwareurl.com)
-- [URL & Website Scanner](https://www.urlvoid.com)
 - [Checkphish](https://checkphish.ai)
 - [Blacklight – The Markup](https://themarkup.org/blacklight)
 - [Render-tron](https://render-tron.appspot.com)
@@ -104,9 +103,7 @@ A Great Collection of OSINT tools, By PT-Snails.
 - [Find Website IP Address](https://www.site24x7.com/find-ip-address.html)
 - [IP Address Blacklist Check](https://www.blacklistalert.org)
 - [SSL Certificate Checker](https://www.sslshopper.com/ssl-checker.html)
-- [Phishing Kit Detector](https://checkphish.ai)
 - [SpiderFoot](https://www.spiderfoot.net)
-- [Malicious Website Lookup (Virustotal)](https://www.virustotal.com)
 - [How to Tell if a Website is Dangerous (Kaspersky)](https://www.kaspersky.com/resource-center/preemptive-safety/how-to-tell-if-a-website-is-safe)
 - [VirusShare.com](https://virusshare.com)
 - [Jotti’s Malware Scan](https://virusscan.jotti.org)
@@ -257,7 +254,6 @@ A Great Collection of OSINT tools, By PT-Snails.
 
 ## Note Capture & Screenshots
 
-- [Exotic Cars Collection](https://exoticcars.collection.com)
 - [Text2MindMap](https://text2mindmap.com)
 - [Mindmup](https://www.mindmup.com)
 - [Tldraw](https://www.tldraw.com)
@@ -497,6 +493,203 @@ A Great Collection of OSINT tools, By PT-Snails.
 
 ---
 
+## Search Engine Dorks
+
+Advanced search operators and dorks for various search engines to find specific information.
+
+### 📚 Comprehensive Dork Collections
+
+**Detailed dork lists for each search engine**:
+- **[Google Dorks](google-dorks.md)** - 500+ Google search operators, file hunting, authentication portals, exposed data
+- **[Shodan Dorks](shodan-dorks.md)** - IoT devices, ICS/SCADA systems, databases, network infrastructure
+- **[GitHub Dorks](github-dorks.md)** - API keys, credentials, secrets, configuration files, private keys
+- **[Other Search Engines Dorks](other-search-engines-dorks.md)** - Censys, Bing, FOFA, ZoomEye, GreyNoise, BinaryEdge
+
+### 🎓 Advanced OSINT Methodology
+
+- **[Advanced OSINT Techniques](advanced-osint-techniques.md)** - Professional investigation methodologies, IMINT, GEOINT, SOCMINT, OPSEC
+
+---
+
+### Google Dorks
+
+- [Google Dorks List (Exploit-DB)](https://www.exploit-db.com/google-dorks)
+- [GHDB - Google Hacking Database](https://www.exploit-db.com/google-hacking-database)
+- [Google Advanced Search](https://www.google.com/advanced_search)
+- [DorkSearch](https://dorksearch.com)
+- [Google Dork Cheat Sheet (SANS)](https://www.sans.org/security-resources/GoogleCheatSheet.pdf)
+
+**Common Google Dork Operators:**
+- `site:` - Limit results to a specific domain
+- `filetype:` - Search for specific file types (pdf, xls, doc, etc.)
+- `intitle:` - Search for pages with specific words in the title
+- `inurl:` - Search for pages with specific words in the URL
+- `intext:` - Search for pages with specific words in the body
+- `cache:` - View Google's cached version of a page
+- `related:` - Find sites related to a given domain
+- `link:` - Find pages that link to a specific URL
+- `"exact phrase"` - Search for exact phrase matches
+- `-exclude` - Exclude terms from search results
+- `OR` - Search for either term
+- `*` - Wildcard operator
+
+**Example Dorks:**
+```
+site:example.com filetype:pdf
+intitle:"index of" password
+site:gov filetype:xls "confidential"
+inurl:admin intitle:login
+site:pastebin.com "password"
+```
+
+### Shodan Dorks
+
+- [Shodan](https://www.shodan.io)
+- [Shodan Search Query Examples](https://github.com/jakejarvis/awesome-shodan-queries)
+- [Shodan Filters Reference](https://www.shodan.io/search/filters)
+
+**Common Shodan Search Filters:**
+- `port:` - Search by port number
+- `country:` - Filter by country code
+- `city:` - Filter by city name
+- `os:` - Search by operating system
+- `hostname:` - Search by hostname
+- `net:` - Search by IP range (CIDR)
+- `org:` - Search by organization
+- `product:` - Search by product name
+- `version:` - Search by version number
+- `geo:` - Search by coordinates
+- `before/after:` - Filter by date
+
+**Example Shodan Dorks:**
+```
+product:"MySQL" port:3306
+apache country:US
+webcamxp port:8080
+port:23 console
+default password
+port:21 Anonymous user logged in
+```
+
+### GitHub Dorks
+
+- [GitHub Advanced Search](https://github.com/search/advanced)
+- [GitDorker - GitHub Dorking Tool](https://github.com/obheda12/GitDorker)
+- [TruffleHog - Search Git Repos for Secrets](https://github.com/trufflesecurity/truffleHog)
+
+**Common GitHub Search Operators:**
+- `filename:` - Search by filename
+- `extension:` - Search by file extension
+- `language:` - Filter by programming language
+- `user:` - Search in specific user's repos
+- `org:` - Search in organization repos
+- `repo:` - Search in specific repository
+- `path:` - Search in specific file path
+- `size:` - Filter by file size
+- `stars:` - Filter by star count
+- `created:` - Filter by creation date
+- `pushed:` - Filter by last push date
+
+**Example GitHub Dorks:**
+```
+filename:.env DB_PASSWORD
+extension:pem private
+api_key language:python
+password extension:sql
+org:target filename:config
+AWS_SECRET_ACCESS_KEY
+```
+
+### Censys Dorks
+
+- [Censys Search](https://search.censys.io)
+- [Censys Search Language](https://search.censys.io/search/language)
+
+**Common Censys Search Fields:**
+- `services.port:` - Search by port
+- `location.country:` - Filter by country
+- `services.software.product:` - Search by product
+- `services.software.version:` - Search by version
+- `autonomous_system.name:` - Search by ASN
+- `services.certificate:` - Search certificates
+
+**Example Censys Dorks:**
+```
+services.port:22 and location.country:US
+services.software.product:nginx
+services.certificate:"example.com"
+```
+
+### Bing Dorks
+
+- [Bing Advanced Search](https://www.bing.com/search?q=advanced+search)
+
+**Common Bing Operators:**
+- `site:` - Limit to specific domain
+- `filetype:` - Search for file types
+- `intitle:` - Search page titles
+- `inurl:` - Search URLs
+- `ip:` - Find sites hosted on specific IP
+- `contains:` - Find pages that link to specific file type
+- `linkfromdomain:` - Find pages linking from a domain
+
+### DuckDuckGo Dorks
+
+- [DuckDuckGo Search Syntax](https://duckduckgo.com/duckduckgo-help-pages/results/syntax/)
+
+**Common DuckDuckGo Operators:**
+- `site:` - Search specific site
+- `filetype:` - Search for file types
+- `intitle:` - Search in title
+- `inurl:` - Search in URL
+
+### FOFA Dorks
+
+- [FOFA Search](https://fofa.so)
+- [FOFA Search Grammar](https://fofa.info/api)
+
+**Common FOFA Operators:**
+- `title=` - Search page title
+- `body=` - Search page body
+- `domain=` - Search domain
+- `host=` - Search host
+- `port=` - Search port
+- `protocol=` - Search protocol
+- `country=` - Search country
+
+### Other Search Engines & Dorks
+
+**Wayback Machine:**
+- [Wayback Machine](https://archive.org/web/)
+- Search archived versions: `https://web.archive.org/web/*/example.com`
+
+**PublicWWW:**
+- [PublicWWW](https://publicwww.com)
+- Search source code: Find websites using specific code snippets
+
+**Binary Edge:**
+- [BinaryEdge](https://www.binaryedge.io)
+- IoT & Internet scanning search engine
+
+**ZoomEye:**
+- [ZoomEye](https://www.zoomeye.org)
+- Cyberspace search engine
+
+**GreyNoise:**
+- [GreyNoise](https://www.greynoise.io)
+- Search internet scan & attack traffic
+
+### Dork Collections & Resources
+
+- [Awesome Shodan Queries (GitHub)](https://github.com/jakejarvis/awesome-shodan-queries)
+- [Google Hacking Database](https://www.exploit-db.com/google-hacking-database)
+- [Dorking (dehashed.com)](https://dehashed.com)
+- [Pentest-Tools Dorks](https://pentest-tools.com/information-gathering/google-hacking)
+- [Netlas.io - Search Engine for Security](https://netlas.io)
+- [ONYPHE - Cyber Defense Search Engine](https://www.onyphe.io)
+
+---
+
 ## Exploits
 
 - [Exploit Database](https://www.exploit-db.com)
@@ -521,10 +714,6 @@ A Great Collection of OSINT tools, By PT-Snails.
 - [Wikileaks](https://wikileaks.org)
 - [Transparency Toolkit](https://transparencytoolkit.org)
 - [Whois.com](https://www.whois.com)
-- [Blacklight – The Markup](https://themarkup.org/blacklight)
-- [Checkphish.ai](https://checkphish.ai)
-- [Threatcrowd](https://threatcrowd.org)
-- [MXtoolbox](https://mxtoolbox.com)
 
 ---
 
@@ -629,15 +818,6 @@ A Great Collection of OSINT tools, By PT-Snails.
 ## Document Validation
 
 - [Document Validation ID Passport (EdisonTD)](https://www.edisontd.com/document-validation)
-
----
-
-## Note Capture / Screenshot Tools
-
-- [Screenshot.guru](https://screenshot.guru)
-- [Snipclip](https://snipclip.com)
-- [Screen Recorder](https://www.screenrecorder.com)
-- [Forensic OSINT Full Page Screen Capture](https://osintscreenrecorder.com)
 
 ---
 
