@@ -63,6 +63,7 @@ A Great Collection of OSINT tools, By PT-Snails.
 - [ID Generators](#id-generators)
 - [Crypto](#crypto)
 - [Research and Investigative Tools](#research-and-investigative-tools)
+- [Search Engine Dorks](#search-engine-dorks)
 - [Exploits](#exploits)
 - [Others](#others)
 - [Deep & Dark Web](#deep--dark-web)
@@ -489,6 +490,189 @@ A Great Collection of OSINT tools, By PT-Snails.
 - [FOFA](https://fofa.so)
 - [BuiltWith Technology Lookup](https://builtwith.com)
 - [SpyOnWeb](https://spyonweb.com)
+
+---
+
+## Search Engine Dorks
+
+Advanced search operators and dorks for various search engines to find specific information.
+
+### Google Dorks
+
+- [Google Dorks List (Exploit-DB)](https://www.exploit-db.com/google-dorks)
+- [GHDB - Google Hacking Database](https://www.exploit-db.com/google-hacking-database)
+- [Google Advanced Search](https://www.google.com/advanced_search)
+- [DorkSearch](https://dorksearch.com)
+- [Google Dork Cheat Sheet (SANS)](https://www.sans.org/security-resources/GoogleCheatSheet.pdf)
+
+**Common Google Dork Operators:**
+- `site:` - Limit results to a specific domain
+- `filetype:` - Search for specific file types (pdf, xls, doc, etc.)
+- `intitle:` - Search for pages with specific words in the title
+- `inurl:` - Search for pages with specific words in the URL
+- `intext:` - Search for pages with specific words in the body
+- `cache:` - View Google's cached version of a page
+- `related:` - Find sites related to a given domain
+- `link:` - Find pages that link to a specific URL
+- `"exact phrase"` - Search for exact phrase matches
+- `-exclude` - Exclude terms from search results
+- `OR` - Search for either term
+- `*` - Wildcard operator
+
+**Example Dorks:**
+```
+site:example.com filetype:pdf
+intitle:"index of" password
+site:gov filetype:xls "confidential"
+inurl:admin intitle:login
+site:pastebin.com "password"
+```
+
+### Shodan Dorks
+
+- [Shodan](https://www.shodan.io)
+- [Shodan Search Query Examples](https://github.com/jakejarvis/awesome-shodan-queries)
+- [Shodan Filters Reference](https://www.shodan.io/search/filters)
+
+**Common Shodan Search Filters:**
+- `port:` - Search by port number
+- `country:` - Filter by country code
+- `city:` - Filter by city name
+- `os:` - Search by operating system
+- `hostname:` - Search by hostname
+- `net:` - Search by IP range (CIDR)
+- `org:` - Search by organization
+- `product:` - Search by product name
+- `version:` - Search by version number
+- `geo:` - Search by coordinates
+- `before/after:` - Filter by date
+
+**Example Shodan Dorks:**
+```
+product:"MySQL" port:3306
+apache country:US
+webcamxp port:8080
+port:23 console
+default password
+port:21 Anonymous user logged in
+```
+
+### GitHub Dorks
+
+- [GitHub Advanced Search](https://github.com/search/advanced)
+- [GitDorker - GitHub Dorking Tool](https://github.com/obheda12/GitDorker)
+- [TruffleHog - Search Git Repos for Secrets](https://github.com/trufflesecurity/truffleHog)
+
+**Common GitHub Search Operators:**
+- `filename:` - Search by filename
+- `extension:` - Search by file extension
+- `language:` - Filter by programming language
+- `user:` - Search in specific user's repos
+- `org:` - Search in organization repos
+- `repo:` - Search in specific repository
+- `path:` - Search in specific file path
+- `size:` - Filter by file size
+- `stars:` - Filter by star count
+- `created:` - Filter by creation date
+- `pushed:` - Filter by last push date
+
+**Example GitHub Dorks:**
+```
+filename:.env DB_PASSWORD
+extension:pem private
+api_key language:python
+password extension:sql
+org:target filename:config
+AWS_SECRET_ACCESS_KEY
+```
+
+### Censys Dorks
+
+- [Censys Search](https://search.censys.io)
+- [Censys Search Language](https://search.censys.io/search/language)
+
+**Common Censys Search Fields:**
+- `services.port:` - Search by port
+- `location.country:` - Filter by country
+- `services.software.product:` - Search by product
+- `services.software.version:` - Search by version
+- `autonomous_system.name:` - Search by ASN
+- `services.certificate:` - Search certificates
+
+**Example Censys Dorks:**
+```
+services.port:22 and location.country:US
+services.software.product:nginx
+services.certificate:"example.com"
+```
+
+### Bing Dorks
+
+- [Bing Advanced Search](https://www.bing.com/search?q=advanced+search)
+
+**Common Bing Operators:**
+- `site:` - Limit to specific domain
+- `filetype:` - Search for file types
+- `intitle:` - Search page titles
+- `inurl:` - Search URLs
+- `ip:` - Find sites hosted on specific IP
+- `contains:` - Find pages that link to specific file type
+- `linkfromdomain:` - Find pages linking from a domain
+
+### DuckDuckGo Dorks
+
+- [DuckDuckGo Search Syntax](https://duckduckgo.com/duckduckgo-help-pages/results/syntax/)
+
+**Common DuckDuckGo Operators:**
+- `site:` - Search specific site
+- `filetype:` - Search for file types
+- `intitle:` - Search in title
+- `inurl:` - Search in URL
+
+### FOFA Dorks
+
+- [FOFA Search](https://fofa.so)
+- [FOFA Search Grammar](https://fofa.info/api)
+
+**Common FOFA Operators:**
+- `title=` - Search page title
+- `body=` - Search page body
+- `domain=` - Search domain
+- `host=` - Search host
+- `port=` - Search port
+- `protocol=` - Search protocol
+- `country=` - Search country
+
+### Other Search Engines & Dorks
+
+**Wayback Machine:**
+- [Wayback Machine](https://archive.org/web/)
+- Search archived versions: `https://web.archive.org/web/*/example.com`
+
+**PublicWWW:**
+- [PublicWWW](https://publicwww.com)
+- Search source code: Find websites using specific code snippets
+
+**Binary Edge:**
+- [BinaryEdge](https://www.binaryedge.io)
+- IoT & Internet scanning search engine
+
+**ZoomEye:**
+- [ZoomEye](https://www.zoomeye.org)
+- Cyberspace search engine
+
+**GreyNoise:**
+- [GreyNoise](https://www.greynoise.io)
+- Search internet scan & attack traffic
+
+### Dork Collections & Resources
+
+- [Awesome Shodan Queries (GitHub)](https://github.com/jakejarvis/awesome-shodan-queries)
+- [Google Hacking Database](https://www.exploit-db.com/google-hacking-database)
+- [Dorking (dehashed.com)](https://dehashed.com)
+- [Pentest-Tools Dorks](https://pentest-tools.com/information-gathering/google-hacking)
+- [Netlas.io - Search Engine for Security](https://netlas.io)
+- [ONYPHE - Cyber Defense Search Engine](https://www.onyphe.io)
 
 ---
 
