@@ -497,6 +497,20 @@ A Great Collection of OSINT tools, By PT-Snails.
 
 Advanced search operators and dorks for various search engines to find specific information.
 
+### 📚 Comprehensive Dork Collections
+
+**Detailed dork lists for each search engine**:
+- **[Google Dorks](google-dorks.md)** - 500+ Google search operators, file hunting, authentication portals, exposed data
+- **[Shodan Dorks](shodan-dorks.md)** - IoT devices, ICS/SCADA systems, databases, network infrastructure
+- **[GitHub Dorks](github-dorks.md)** - API keys, credentials, secrets, configuration files, private keys
+- **[Other Search Engines Dorks](other-search-engines-dorks.md)** - Censys, Bing, FOFA, ZoomEye, GreyNoise, BinaryEdge
+
+### 🎓 Advanced OSINT Methodology
+
+- **[Advanced OSINT Techniques](advanced-osint-techniques.md)** - Professional investigation methodologies, IMINT, GEOINT, SOCMINT, OPSEC
+
+---
+
 ### Google Dorks
 
 - [Google Dorks List (Exploit-DB)](https://www.exploit-db.com/google-dorks)
