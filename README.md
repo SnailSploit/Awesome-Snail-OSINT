@@ -1,7 +1,7 @@
-# AwesomeSnailsOsint
+# AwesomeSnailOSINT
 A Great Collection of OSINT tools, By PT-Snails.
 
-``
+```
 
 
 ⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⢀⣀⣀⣀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀
@@ -32,7 +32,7 @@ A Great Collection of OSINT tools, By PT-Snails.
 
 ░█▀▀█ ─█▀▀█ ░█▀▀█ ░█▀▀▀ 
 ░█▄▄▀ ░█▄▄█ ░█─── ░█▀▀▀ 
-░█─░█ ░█─░█ ░█▄▄█ ░█▄▄▄⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠉⠉⠉⠁⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀
+░█─░█ ░█─░█ ░█▄▄█ ░█▄▄▄
 ```
 ---
 
@@ -73,7 +73,6 @@ A Great Collection of OSINT tools, By PT-Snails.
 - [Materials / MAC](#materials--mac)
 - [Default Passwords](#default-passwords)
 - [Document Validation](#document-validation)
-- [Note Capture / Screenshot Tools](#note-capture--screenshot-tools)
 - [Training and Learning](#training-and-learning)
 - [Additional Awesome Repositories](#additional-awesome-repositories)
 
@@ -89,7 +88,6 @@ A Great Collection of OSINT tools, By PT-Snails.
 - [Threatcrowd](https://www.threatcrowd.org)
 - [MXtoolbox](https://mxtoolbox.com)
 - [MalwareURL](https://www.malwareurl.com)
-- [URL & Website Scanner](https://www.urlvoid.com)
 - [Checkphish](https://checkphish.ai)
 - [Blacklight – The Markup](https://themarkup.org/blacklight)
 - [Render-tron](https://render-tron.appspot.com)
@@ -104,9 +102,7 @@ A Great Collection of OSINT tools, By PT-Snails.
 - [Find Website IP Address](https://www.site24x7.com/find-ip-address.html)
 - [IP Address Blacklist Check](https://www.blacklistalert.org)
 - [SSL Certificate Checker](https://www.sslshopper.com/ssl-checker.html)
-- [Phishing Kit Detector](https://checkphish.ai)
 - [SpiderFoot](https://www.spiderfoot.net)
-- [Malicious Website Lookup (Virustotal)](https://www.virustotal.com)
 - [How to Tell if a Website is Dangerous (Kaspersky)](https://www.kaspersky.com/resource-center/preemptive-safety/how-to-tell-if-a-website-is-safe)
 - [VirusShare.com](https://virusshare.com)
 - [Jotti’s Malware Scan](https://virusscan.jotti.org)
@@ -257,7 +253,6 @@ A Great Collection of OSINT tools, By PT-Snails.
 
 ## Note Capture & Screenshots
 
-- [Exotic Cars Collection](https://exoticcars.collection.com)
 - [Text2MindMap](https://text2mindmap.com)
 - [Mindmup](https://www.mindmup.com)
 - [Tldraw](https://www.tldraw.com)
@@ -521,10 +516,6 @@ A Great Collection of OSINT tools, By PT-Snails.
 - [Wikileaks](https://wikileaks.org)
 - [Transparency Toolkit](https://transparencytoolkit.org)
 - [Whois.com](https://www.whois.com)
-- [Blacklight – The Markup](https://themarkup.org/blacklight)
-- [Checkphish.ai](https://checkphish.ai)
-- [Threatcrowd](https://threatcrowd.org)
-- [MXtoolbox](https://mxtoolbox.com)
 
 ---
 
@@ -629,15 +620,6 @@ A Great Collection of OSINT tools, By PT-Snails.
 ## Document Validation
 
 - [Document Validation ID Passport (EdisonTD)](https://www.edisontd.com/document-validation)
-
----
-
-## Note Capture / Screenshot Tools
-
-- [Screenshot.guru](https://screenshot.guru)
-- [Snipclip](https://snipclip.com)
-- [Screen Recorder](https://www.screenrecorder.com)
-- [Forensic OSINT Full Page Screen Capture](https://osintscreenrecorder.com)
 
 ---
 
