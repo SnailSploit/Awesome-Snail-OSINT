@@ -1,7 +1,20 @@
-# AwesomeSnailOSINT
-A Great Collection of OSINT tools, By PT-Snails.
+<div align="center">
 
-```
+# AwesomeSnailOSINT
+
+### 🐌 Professional OSINT Resource Collection
+
+[![Awesome](https://awesome.re/badge.svg)](https://awesome.re)
+[![GitHub Stars](https://img.shields.io/github/stars/SnailSploit/AwersomeSnailOSint?style=social)](https://github.com/SnailSploit/AwersomeSnailOSint/stargazers)
+[![License](https://img.shields.io/badge/License-MIT-blue.svg)](LICENSE)
+[![PRs Welcome](https://img.shields.io/badge/PRs-welcome-brightgreen.svg)](CONTRIBUTING.md)
+[![Maintained](https://img.shields.io/badge/Maintained%3F-yes-green.svg)](https://github.com/SnailSploit/AwersomeSnailOSint/graphs/commit-activity)
+
+**A comprehensive collection of OSINT tools, techniques, and resources for security researchers, investigators, and penetration testers.**
+
+[🚀 Quick Start](#-quick-start) • [📚 Dork Collections](#-comprehensive-dork-collections) • [🛠️ Tools](#-osint-tools--dashboards) • [🎓 Learning](#-training-and-learning) • [🤝 Contributing](#-contributing)
+
+---
 
 
 ⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⢀⣀⣀⣀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀
@@ -30,13 +43,81 @@ A Great Collection of OSINT tools, By PT-Snails.
 ─▀▀▀▄▄ ░█─── ░█──░█ ░█░█░█ 　 ░█▄▄█ ░█░█░█ ░█─░█ 　 ─▀▀▀▄▄ ─░█── ░█▀▀▀ ░█▄▄█ ░█─░█ ░█▄▄▄█ ▄▄ 　 ░█░█░█ ░█─ ░█░█░█ ─▀▀▀▄▄ 　 ─░█── ░█▀▀█ ░█▀▀▀ 
 ░█▄▄▄█ ░█▄▄█ ░█▄▄▄█ ░█▄▀▄█ 　 ░█─░█ ░█──▀█ ░█▄▄▀ 　 ░█▄▄▄█ ─░█── ░█▄▄▄ ░█─░█ ░█▄▄▀ ──░█── ─█ 　 ░█▄▀▄█ ▄█▄ ░█──▀█ ░█▄▄▄█ 　 ─░█── ░█─░█ ░█▄▄▄ 
 
-░█▀▀█ ─█▀▀█ ░█▀▀█ ░█▀▀▀ 
-░█▄▄▀ ░█▄▄█ ░█─── ░█▀▀▀ 
+░█▀▀█ ─█▀▀█ ░█▀▀█ ░█▀▀▀
+░█▄▄▀ ░█▄▄█ ░█─── ░█▀▀▀
 ░█─░█ ░█─░█ ░█▄▄█ ░█▄▄▄
-```
+
+</div>
+
 ---
 
-## Table of Contents
+## 🌟 Features
+
+- **🔍 1000+ Search Queries**: Expert-level dorks for Google, Shodan, GitHub, and more
+- **🛠️ 500+ OSINT Tools**: Curated collection of the best investigation tools
+- **📖 Professional Methodologies**: Advanced techniques for IMINT, SOCMINT, GEOINT
+- **🎯 Specialized Collections**: Organized by category for quick access
+- **⚡ Always Updated**: Regular updates with latest tools and techniques
+- **📝 Well Documented**: Detailed guides and examples for each tool
+
+---
+
+## 🚀 Quick Start
+
+### For Beginners
+
+1. Start with **[OSINT Framework](https://osintframework.com)** to understand the landscape
+2. Explore **[Google Dorks](google-dorks.md)** for basic web reconnaissance
+3. Learn **[Social Media Intelligence](https://www.social-searcher.com)** techniques
+4. Practice with **[TraceLabs](https://www.tracelabs.org/)** challenges
+
+### For Professionals
+
+1. **Advanced Dorking**: Check our comprehensive collections
+   - [Google Dorks](google-dorks.md) - Web application hunting
+   - [Shodan Dorks](shodan-dorks.md) - IoT & infrastructure mapping
+   - [GitHub Dorks](github-dorks.md) - Credential & secret discovery
+
+2. **Investigation Methodology**: Read [Advanced OSINT Techniques](advanced-osint-techniques.md)
+
+3. **Toolkits**: Jump to [OSINT Tools & Dashboards](#-osint-tools--dashboards)
+
+---
+
+## 📑 Table of Contents
+
+### 🎯 Core Resources
+- [🌟 Features](#-features)
+- [🚀 Quick Start](#-quick-start)
+- [📚 Search Engine Dorks](#-search-engine-dorks)
+- [🔧 OSINT Tools & Dashboards](#-osint-tools--dashboards)
+- [🎓 Training and Learning](#-training-and-learning)
+
+### 🔍 Investigation Tools
+- [🛡️ Website Security](#-website-security)
+- [📧 Email Search](#-email-search)
+- [📱 Social Media Intelligence](#-social-media-intelligence)
+- [🌐 Domain & Network Research](#-domain--network-research)
+- [💰 Financial & Crypto Intelligence](#-financial--crypto-intelligence)
+
+### 🌍 Geographic & Visual Intelligence
+- [🗺️ Geo Tools](#-geo-tools)
+- [📸 Image & Video Analysis](#-image--video-analysis)
+- [📷 Drones & Webcams](#-drones--webcams-databases)
+
+### 🕵️ Advanced Topics
+- [🌑 Deep & Dark Web](#-deep--dark-web)
+- [🔐 Exploits & Vulnerabilities](#-exploits)
+- [🆔 ID Generators & Testing](#-id-generators)
+- [🔑 Default Passwords](#-default-passwords)
+
+### 📚 Additional Resources
+- [📦 OSINT Collections](#-osint-collections)
+- [🧰 Toolkits](#-toolkits)
+- [📖 Additional Repositories](#-additional-awesome-repositories)
+
+<details>
+<summary><b>📋 Detailed Table of Contents (Click to expand)</b></summary>
 
 - [Alternative Website Security Search](#alternative-website-security-search)
 - [Website Security](#website-security)
@@ -77,9 +158,11 @@ A Great Collection of OSINT tools, By PT-Snails.
 - [Training and Learning](#training-and-learning)
 - [Additional Awesome Repositories](#additional-awesome-repositories)
 
+</details>
+
 ---
 
-## Alternative Website Security Search
+## 🔍 Alternative Website Security Search
 
 - [Is This Website Safe](https://www.isthiswebsitesafe.com)
 - [Safe Browsing Site Status (Google)](https://transparencyreport.google.com/safe-browsing/search)
@@ -95,7 +178,7 @@ A Great Collection of OSINT tools, By PT-Snails.
 
 ---
 
-## Website Security
+## 🛡️ Website Security
 
 - [Virustotal](https://www.virustotal.com)
 - [Threat Intelligence Platform](https://threatintelligenceplatform.com)
@@ -110,7 +193,7 @@ A Great Collection of OSINT tools, By PT-Snails.
 
 ---
 
-## Email Search
+## 📧 Email Search
 
 - [Hunter – Find Email Addresses](https://hunter.io)
 - [Intelligence X](https://intelx.io)
@@ -133,7 +216,7 @@ A Great Collection of OSINT tools, By PT-Snails.
 
 ---
 
-## Android and iOS Emulator
+## 📱 Android and iOS Emulator
 
 - [Genymotion – Android Emulator](https://www.genymotion.com)
 - [Andyroid](http://www.andyroid.net)
@@ -147,7 +230,7 @@ A Great Collection of OSINT tools, By PT-Snails.
 
 ---
 
-## RSS and Feed
+## 📡 RSS and Feed
 
 - [Freefullrss.com](https://www.freefullrss.com)
 - [Mross.it](https://mross.it)
@@ -163,7 +246,7 @@ A Great Collection of OSINT tools, By PT-Snails.
 
 ---
 
-## OSINT Tools & Dashboards
+## 🔧 OSINT Tools & Dashboards
 
 - [OSINT Tools (Curated by Lorand Bodo)](https://www.start.me/p/7nmoJG/digitintel)
 - [Technisette OSINT Toolbelt](https://technisetteosinttoolbelt.com)
@@ -184,7 +267,7 @@ A Great Collection of OSINT tools, By PT-Snails.
 
 ---
 
-## Credit Card / BIN Info
+## 💳 Credit Card / BIN Info
 
 - [Free BIN/IIN Lookup Web Service](https://www.bincodes.com/bin/)
 - [Free BIN Checker](https://www.freebinchecker.com)
@@ -195,7 +278,7 @@ A Great Collection of OSINT tools, By PT-Snails.
 
 ---
 
-## WhatsApp
+## 💬 WhatsApp
 
 - [Fake WhatsApp Chat Generator](https://fakewhats.com)
 - [WhatsApp Tools of All Kind](https://whatsapp.tools)
@@ -207,7 +290,7 @@ A Great Collection of OSINT tools, By PT-Snails.
 
 ---
 
-## Identifying Combatant Affiliation
+## 🎖️ Identifying Combatant Affiliation
 
 - [How to Digitally Verify Combatant Affiliation (Bellingcat)](https://www.bellingcat.com/resources/2021/02/11/how-to-digitally-verify-combatant-affiliation-in-middle-east-conflicts)
 - [Syrian Opposition Factions (Bellingcat)](https://www.bellingcat.com/resources/2021/02/11/syrian-opposition-factions-in-the-syrian-civil-war)
@@ -219,7 +302,7 @@ A Great Collection of OSINT tools, By PT-Snails.
 
 ---
 
-## Clubhouse
+## 🎙️ Clubhouse
 
 - [Clubhouse Database](https://clubhousedatabase.com)
 - [Rooms of Clubhouse](https://rooms.clubhouse.com)
@@ -227,7 +310,7 @@ A Great Collection of OSINT tools, By PT-Snails.
 
 ---
 
-## Facebook
+## 👤 Facebook
 
 - [Find My Facebook ID](https://findmyfbid.com)
 - [Facebook Search (Native)](https://www.facebook.com/search/top?q=search)
@@ -245,14 +328,14 @@ A Great Collection of OSINT tools, By PT-Snails.
 
 ---
 
-## Country
+## 🌍 Country
 
 - [Passport Index](https://www.passportindex.org)
 - [Document Validation (EdisonTD)](https://www.edisontd.com/document-validation)
 
 ---
 
-## Note Capture & Screenshots
+## 📸 Note Capture & Screenshots
 
 - [Text2MindMap](https://text2mindmap.com)
 - [Mindmup](https://www.mindmup.com)
@@ -265,7 +348,7 @@ A Great Collection of OSINT tools, By PT-Snails.
 
 ---
 
-## Geo Tools
+## 🗺️ Geo Tools
 
 - [Geocreepy](https://geocreepy.com)
 - [Sentinel Hub](https://www.sentinel-hub.com)
@@ -297,7 +380,7 @@ A Great Collection of OSINT tools, By PT-Snails.
 
 ---
 
-## Monitoring News, Conflicts & Web
+## 📰 Monitoring News, Conflicts & Web
 
 - [Liveuamap.com](https://liveuamap.com)
 - [NewsBrief](https://newsbrief.com)
@@ -305,7 +388,7 @@ A Great Collection of OSINT tools, By PT-Snails.
 
 ---
 
-## Drones & Webcams Databases
+## 📷 Drones & Webcams Databases
 
 - [Travel with Drone](https://travelwithdrone.com)
 - [Dronestagram](https://www.dronestagr.am)
@@ -319,7 +402,7 @@ A Great Collection of OSINT tools, By PT-Snails.
 
 ---
 
-## Scientific Search Engines
+## 🔬 Scientific Search Engines
 
 - [Advanced Patent Search (Google Patents)](https://patents.google.com/advanced)
 - [Elsevier](https://www.elsevier.com)
@@ -330,7 +413,7 @@ A Great Collection of OSINT tools, By PT-Snails.
 
 ---
 
-## OSINT Collections
+## 📦 OSINT Collections
 
 - [Ultimate OSINT Collection](https://www.start.me/p/7nmoJG/digitintel)
 - [OSINT Combine](https://osintcombine.com)
@@ -349,7 +432,7 @@ A Great Collection of OSINT tools, By PT-Snails.
 
 ---
 
-## License Plate
+## 🚗 License Plate
 
 - [VIN Decoder](https://www.vindecoder.net)
 - [Europlates.eu](https://www.europlates.eu)
@@ -363,7 +446,7 @@ A Great Collection of OSINT tools, By PT-Snails.
 
 ---
 
-## Phone Numbers
+## ☎️ Phone Numbers
 
 - [Truecaller](https://www.truecaller.com)
 - [CallerID Test](https://calleridtest.com)
@@ -381,7 +464,7 @@ A Great Collection of OSINT tools, By PT-Snails.
 
 ---
 
-## Toolkits
+## 🧰 Toolkits
 
 - [OSINT Summit 2021 Resources](https://www.osintsummit.org/resources/)
 - [OSINT Bookmarks](https://osintbookmarks.com)
@@ -403,7 +486,7 @@ A Great Collection of OSINT tools, By PT-Snails.
 
 ---
 
-## Social Media Search
+## 📱 Social Media Search
 
 - [Social Searcher](https://www.social-searcher.com)
 - [Wikipedia: Social Networking Services](https://en.wikipedia.org/wiki/List_of_social_networking_services)
@@ -422,7 +505,7 @@ A Great Collection of OSINT tools, By PT-Snails.
 
 ---
 
-## ID Generators
+## 🆔 ID Generators
 
 - [Username Generator (SpinXO)](https://www.spinxo.com/username-generator)
 - [Fake Name Generator](https://www.fakenamegenerator.com)
@@ -459,7 +542,7 @@ A Great Collection of OSINT tools, By PT-Snails.
 
 ---
 
-## Crypto
+## 💰 Crypto
 
 - [CoinMarketCap](https://coinmarketcap.com)
 - [Bitcoin.org](https://bitcoin.org)
@@ -477,7 +560,7 @@ A Great Collection of OSINT tools, By PT-Snails.
 
 ---
 
-## Research and Investigative Tools
+## 🔍 Research and Investigative Tools
 
 - [Intelligence X](https://intelx.io)
 - [Censys](https://censys.io)
@@ -493,21 +576,90 @@ A Great Collection of OSINT tools, By PT-Snails.
 
 ---
 
-## Search Engine Dorks
+## 📚 Search Engine Dorks
 
-Advanced search operators and dorks for various search engines to find specific information.
+> **Expert-level search queries for finding sensitive information across the internet**
 
 ### 📚 Comprehensive Dork Collections
 
-**Detailed dork lists for each search engine**:
-- **[Google Dorks](google-dorks.md)** - 500+ Google search operators, file hunting, authentication portals, exposed data
-- **[Shodan Dorks](shodan-dorks.md)** - IoT devices, ICS/SCADA systems, databases, network infrastructure
-- **[GitHub Dorks](github-dorks.md)** - API keys, credentials, secrets, configuration files, private keys
-- **[Other Search Engines Dorks](other-search-engines-dorks.md)** - Censys, Bing, FOFA, ZoomEye, GreyNoise, BinaryEdge
+<table>
+<tr>
+<td width="50%">
+
+#### 🔍 Google Dorks
+**[→ View Full Collection](google-dorks.md)**
+
+- 500+ search operators
+- File hunting techniques
+- Authentication portals
+- Exposed data discovery
+- OSINT-specific queries
+
+</td>
+<td width="50%">
+
+#### 📡 Shodan Dorks
+**[→ View Full Collection](shodan-dorks.md)**
+
+- IoT device discovery
+- ICS/SCADA systems
+- Database exposure
+- Network infrastructure
+- Vulnerability scanning
+
+</td>
+</tr>
+<tr>
+<td width="50%">
+
+#### 🔑 GitHub Dorks
+**[→ View Full Collection](github-dorks.md)**
+
+- API keys & tokens
+- Leaked credentials
+- Configuration files
+- Private keys & certs
+- Cloud secrets
+
+</td>
+<td width="50%">
+
+#### 🌐 Other Search Engines
+**[→ View Full Collection](other-search-engines-dorks.md)**
+
+- Censys queries
+- Bing operators
+- FOFA searches
+- ZoomEye filters
+- GreyNoise, BinaryEdge & more
+
+</td>
+</tr>
+</table>
 
 ### 🎓 Advanced OSINT Methodology
 
-- **[Advanced OSINT Techniques](advanced-osint-techniques.md)** - Professional investigation methodologies, IMINT, GEOINT, SOCMINT, OPSEC
+<table>
+<tr>
+<td>
+
+#### 📖 [Advanced OSINT Techniques](advanced-osint-techniques.md)
+
+**Comprehensive guide covering:**
+- 🔄 Intelligence Cycle & Methodology
+- 👤 Target Profiling (Individual & Organization)
+- 📷 Image Intelligence (IMINT)
+- 🎥 Video Intelligence (VIDINT)
+- 🗺️ Geolocation Techniques
+- 📱 Social Media Intelligence (SOCMINT)
+- 🌑 Dark Web Intelligence
+- 💰 Cryptocurrency Investigation
+- 🔐 OPSEC for Investigators
+- ⚖️ Legal & Ethical Considerations
+
+</td>
+</tr>
+</table>
 
 ---
 
@@ -690,7 +842,7 @@ services.certificate:"example.com"
 
 ---
 
-## Exploits
+## 🔐 Exploits
 
 - [Exploit Database](https://www.exploit-db.com)
 - [ZeroDay Initiative (ZDI)](https://www.zerodayinitiative.com)
@@ -705,7 +857,7 @@ services.certificate:"example.com"
 
 ---
 
-## Others
+## 📋 Others
 
 - [Web Archive](https://archive.org)
 - [Google Scholar](https://scholar.google.com)
@@ -717,7 +869,7 @@ services.certificate:"example.com"
 
 ---
 
-## Deep & Dark Web
+## 🌑 Deep & Dark Web
 
 - [Darksearch.io](https://darksearch.io)
 - [Ahmia – Search Tor Hidden Services](https://ahmia.fi)
@@ -746,7 +898,7 @@ services.certificate:"example.com"
 
 ---
 
-## Telegram
+## ✈️ Telegram
 
 - [Telegram - Lyzem Search](https://lyzem.com)
 - [Telegram - Google Custom Search](https://cse.google.com/cse?cx=017324695940596566242:t68p9efeymg)
@@ -765,7 +917,7 @@ services.certificate:"example.com"
 
 ---
 
-## Instagram
+## 📷 Instagram
 
 - [InstaProfileFinder](https://www.instaprofilefinder.com)
 - [Pikdo](https://www.pikdo.info)
@@ -775,7 +927,7 @@ services.certificate:"example.com"
 
 ---
 
-## Snapchat
+## 👻 Snapchat
 
 - [SnapMap](https://map.snapchat.com)
 - [Snapchat Metadata Extraction (GitHub)](https://github.com/devedse/snapmap-extractor)
@@ -785,7 +937,7 @@ services.certificate:"example.com"
 
 ---
 
-## Skype
+## 💻 Skype
 
 - [Skype Resolver](https://www.skyperesolver.net)
 - [Skype Account Search](https://www.skypesearchengine.com)
@@ -795,7 +947,7 @@ services.certificate:"example.com"
 
 ---
 
-## Materials / MAC
+## 🔧 Materials / MAC
 
 - [IEEE MAC Vendor Lookup](https://standards.ieee.org/products-services/regauth/oui/index.html)
 - [MAC Address Lookup](https://maclookup.app)
@@ -805,7 +957,7 @@ services.certificate:"example.com"
 
 ---
 
-## Default Passwords
+## 🔑 Default Passwords
 
 - [Router Default Passwords](https://www.routerpasswords.com)
 - [Default Password List](https://defaultpassword.com)
@@ -815,13 +967,13 @@ services.certificate:"example.com"
 
 ---
 
-## Document Validation
+## 📄 Document Validation
 
 - [Document Validation ID Passport (EdisonTD)](https://www.edisontd.com/document-validation)
 
 ---
 
-## Training and Learning
+## 🎓 Training and Learning
 
 - [Hack The Box](https://www.hackthebox.com)
 - [TryHackMe](https://tryhackme.com)
@@ -833,7 +985,7 @@ services.certificate:"example.com"
 
 ---
 
-## Additional Awesome Repositories
+## 📖 Additional Awesome Repositories
 
 - [PayloadsAllTheThings](https://github.com/swisskyrepo/PayloadsAllTheThings)
 - [Awesome Pentest](https://github.com/enaqx/awesome-pentest)
@@ -849,4 +1001,95 @@ services.certificate:"example.com"
 
 ---
 
-*This page is maintained by **AwesomeSnailsOsint** – your one-stop collection for all OSINT resources. Contributions and improvements are very welcome!*
+## 🤝 Contributing
+
+We love contributions! Here's how you can help make this resource even better:
+
+### How to Contribute
+
+1. **🐛 Report Issues**: Found a broken link or outdated tool? [Open an issue](https://github.com/SnailSploit/AwersomeSnailOSint/issues)
+2. **✨ Submit Tools**: Know a great OSINT tool we're missing? Submit a pull request!
+3. **📝 Improve Documentation**: Help us improve guides and examples
+4. **🔄 Update Resources**: Keep tools and links current
+
+### Contribution Guidelines
+
+- Ensure tools are actively maintained
+- Provide clear descriptions
+- Test all links before submitting
+- Follow the existing format
+- One tool/resource per pull request
+- No commercial/paid-only tools (unless they have substantial free tier)
+
+---
+
+## ⚠️ Legal Disclaimer
+
+**IMPORTANT**: This collection is for **educational and authorized security research purposes only**.
+
+- ✅ Use for legitimate security testing with proper authorization
+- ✅ Educational purposes and learning
+- ✅ Authorized penetration testing engagements
+- ✅ CTF competitions and security research
+
+- ❌ Unauthorized access to systems
+- ❌ Illegal surveillance or stalking
+- ❌ Harassment or privacy violations
+- ❌ Any malicious activities
+
+**Always obtain proper authorization before conducting any security assessments or investigations.**
+
+---
+
+## 📜 License
+
+This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
+
+---
+
+## 🌟 Star History
+
+If you find this repository useful, please consider giving it a star! ⭐
+
+[![Star History Chart](https://api.star-history.com/svg?repos=SnailSploit/AwersomeSnailOSint&type=Date)](https://star-history.com/#SnailSploit/AwersomeSnailOSint&Date)
+
+---
+
+## 💖 Support
+
+If this project helped you, consider:
+
+- ⭐ Starring the repository
+- 🐛 Reporting bugs and issues
+- 📢 Sharing with the community
+- 🤝 Contributing new resources
+
+---
+
+## 📞 Contact & Community
+
+- **GitHub**: [SnailSploit](https://github.com/SnailSploit)
+- **Issues**: [Report Here](https://github.com/SnailSploit/AwersomeSnailOSint/issues)
+- **Pull Requests**: [Contribute](https://github.com/SnailSploit/AwersomeSnailOSint/pulls)
+
+---
+
+## 🙏 Acknowledgments
+
+Special thanks to:
+- All contributors who have helped build this collection
+- The OSINT community for their invaluable resources
+- Open source tool developers making investigation accessible
+- Security researchers sharing their knowledge
+
+---
+
+<div align="center">
+
+### Made with 🐌 by PT-Snails
+
+**AwesomeSnailOSINT** - Your comprehensive OSINT resource hub
+
+[⬆ Back to Top](#awesomesnailosint)
+
+</div>
