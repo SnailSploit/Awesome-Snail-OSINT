@@ -1,18 +1,50 @@
 <div align="center">
 
-# AwesomeSnailOSINT
+# 🐌 AwesomeSnailOSINT
 
-### 🐌 Professional OSINT Resource Collection
+<img src="https://readme-typing-svg.herokuapp.com?font=Fira+Code&weight=600&size=28&pause=1000&color=00D9FF&center=true&vCenter=true&width=800&lines=Professional+OSINT+Resource+Collection;1000%2B+Search+Dorks;500%2B+Investigation+Tools;Advanced+Techniques+%26+Methodologies;By+PT-Snails+%F0%9F%90%8C" alt="Typing SVG" />
+
+<br>
 
 [![Awesome](https://awesome.re/badge.svg)](https://awesome.re)
-[![GitHub Stars](https://img.shields.io/github/stars/SnailSploit/AwersomeSnailOSint?style=social)](https://github.com/SnailSploit/AwersomeSnailOSint/stargazers)
-[![License](https://img.shields.io/badge/License-MIT-blue.svg)](LICENSE)
-[![PRs Welcome](https://img.shields.io/badge/PRs-welcome-brightgreen.svg)](CONTRIBUTING.md)
-[![Maintained](https://img.shields.io/badge/Maintained%3F-yes-green.svg)](https://github.com/SnailSploit/AwersomeSnailOSint/graphs/commit-activity)
+[![GitHub Stars](https://img.shields.io/github/stars/SnailSploit/AwersomeSnailOSint?style=for-the-badge&logo=github&color=yellow)](https://github.com/SnailSploit/AwersomeSnailOSint/stargazers)
+[![GitHub Forks](https://img.shields.io/github/forks/SnailSploit/AwersomeSnailOSint?style=for-the-badge&logo=github&color=blue)](https://github.com/SnailSploit/AwersomeSnailOSint/network)
+[![GitHub Issues](https://img.shields.io/github/issues/SnailSploit/AwersomeSnailOSint?style=for-the-badge&logo=github&color=red)](https://github.com/SnailSploit/AwersomeSnailOSint/issues)
+[![License](https://img.shields.io/badge/License-MIT-green.svg?style=for-the-badge&logo=opensourceinitiative&logoColor=white)](LICENSE)
 
-**A comprehensive collection of OSINT tools, techniques, and resources for security researchers, investigators, and penetration testers.**
+[![PRs Welcome](https://img.shields.io/badge/PRs-welcome-brightgreen.svg?style=for-the-badge&logo=github)](CONTRIBUTING.md)
+[![Maintained](https://img.shields.io/badge/Maintained%3F-yes-success.svg?style=for-the-badge&logo=github)](https://github.com/SnailSploit/AwersomeSnailOSint/graphs/commit-activity)
+[![Last Commit](https://img.shields.io/github/last-commit/SnailSploit/AwersomeSnailOSint?style=for-the-badge&logo=git&color=orange)](https://github.com/SnailSploit/AwersomeSnailOSint/commits)
+[![Contributors](https://img.shields.io/github/contributors/SnailSploit/AwersomeSnailOSint?style=for-the-badge&logo=github&color=purple)](https://github.com/SnailSploit/AwersomeSnailOSint/graphs/contributors)
 
-[🚀 Quick Start](#-quick-start) • [📚 Dork Collections](#-comprehensive-dork-collections) • [🛠️ Tools](#-osint-tools--dashboards) • [🎓 Learning](#-training-and-learning) • [🤝 Contributing](#-contributing)
+<br>
+
+**🔍 A comprehensive collection of OSINT tools, techniques, and resources for security researchers, investigators, and penetration testers.**
+
+<br>
+
+[![Quick Start](https://img.shields.io/badge/🚀_Quick_Start-Click_Here-00D9FF?style=for-the-badge)](#-quick-start)
+[![Dork Collections](https://img.shields.io/badge/📚_Dork_Collections-1000%2B_Queries-FF6B6B?style=for-the-badge)](#-comprehensive-dork-collections)
+[![Tools](https://img.shields.io/badge/🛠️_Tools-500%2B_Resources-4ECDC4?style=for-the-badge)](#-osint-tools--dashboards)
+[![Learning](https://img.shields.io/badge/🎓_Learning-Start_Here-FFE66D?style=for-the-badge)](#-training-and-learning)
+[![Contributing](https://img.shields.io/badge/🤝_Contributing-Help_Us-95E1D3?style=for-the-badge)](#-contributing)
+
+<br>
+
+```ascii
+╔══════════════════════════════════════════════════════════════════════════════╗
+║                                                                              ║
+║   ███████╗███╗   ██╗ █████╗ ██╗██╗         ██████╗ ███████╗██╗███╗   ██╗████████╗ ║
+║   ██╔════╝████╗  ██║██╔══██╗██║██║        ██╔═══██╗██╔════╝██║████╗  ██║╚══██╔══╝ ║
+║   ███████╗██╔██╗ ██║███████║██║██║        ██║   ██║███████╗██║██╔██╗ ██║   ██║    ║
+║   ╚════██║██║╚██╗██║██╔══██║██║██║        ██║   ██║╚════██║██║██║╚██╗██║   ██║    ║
+║   ███████║██║ ╚████║██║  ██║██║███████╗   ╚██████╔╝███████║██║██║ ╚████║   ██║    ║
+║   ╚══════╝╚═╝  ╚═══╝╚═╝  ╚═╝╚═╝╚══════╝    ╚═════╝ ╚══════╝╚═╝╚═╝  ╚═══╝   ╚═╝    ║
+║                                                                              ║
+╚══════════════════════════════════════════════════════════════════════════════╝
+```
+
+<br>
 
 ---
 
@@ -51,36 +83,177 @@
 
 ---
 
-## 🌟 Features
+<div align="center">
 
-- **🔍 1000+ Search Queries**: Expert-level dorks for Google, Shodan, GitHub, and more
-- **🛠️ 500+ OSINT Tools**: Curated collection of the best investigation tools
-- **📖 Professional Methodologies**: Advanced techniques for IMINT, SOCMINT, GEOINT
-- **🎯 Specialized Collections**: Organized by category for quick access
-- **⚡ Always Updated**: Regular updates with latest tools and techniques
-- **📝 Well Documented**: Detailed guides and examples for each tool
+## 🌟 Why AwesomeSnailOSINT?
 
----
+</div>
 
-## 🚀 Quick Start
+<table>
+<tr>
+<td align="center" width="33%">
+<img src="https://img.shields.io/badge/Search_Queries-1000+-FF6B6B?style=for-the-badge&labelColor=2C2C2C" />
+<br><br>
+<b>🔍 Expert Dorks</b>
+<br>
+Google, Shodan, GitHub<br>and 10+ search engines
+</td>
+<td align="center" width="33%">
+<img src="https://img.shields.io/badge/OSINT_Tools-500+-4ECDC4?style=for-the-badge&labelColor=2C2C2C" />
+<br><br>
+<b>🛠️ Curated Tools</b>
+<br>
+Investigation tools<br>verified & categorized
+</td>
+<td align="center" width="33%">
+<img src="https://img.shields.io/badge/Techniques-Advanced-FFE66D?style=for-the-badge&labelColor=2C2C2C" />
+<br><br>
+<b>📖 Pro Methods</b>
+<br>
+IMINT, SOCMINT<br>GEOINT & more
+</td>
+</tr>
+<tr>
+<td align="center" width="33%">
+<img src="https://img.shields.io/badge/Categories-30+-95E1D3?style=for-the-badge&labelColor=2C2C2C" />
+<br><br>
+<b>🎯 Organized</b>
+<br>
+Specialized collections<br>for quick access
+</td>
+<td align="center" width="33%">
+<img src="https://img.shields.io/badge/Updates-Active-00D9FF?style=for-the-badge&labelColor=2C2C2C" />
+<br><br>
+<b>⚡ Fresh Content</b>
+<br>
+Regular updates with<br>latest techniques
+</td>
+<td align="center" width="33%">
+<img src="https://img.shields.io/badge/Documentation-Complete-B19CD9?style=for-the-badge&labelColor=2C2C2C" />
+<br><br>
+<b>📝 Detailed Guides</b>
+<br>
+Examples & tutorials<br>for each tool
+</td>
+</tr>
+</table>
 
-### For Beginners
+<br>
 
-1. Start with **[OSINT Framework](https://osintframework.com)** to understand the landscape
-2. Explore **[Google Dorks](google-dorks.md)** for basic web reconnaissance
-3. Learn **[Social Media Intelligence](https://www.social-searcher.com)** techniques
-4. Practice with **[TraceLabs](https://www.tracelabs.org/)** challenges
+<div align="center">
 
-### For Professionals
+### 📊 Repository Stats
 
-1. **Advanced Dorking**: Check our comprehensive collections
-   - [Google Dorks](google-dorks.md) - Web application hunting
-   - [Shodan Dorks](shodan-dorks.md) - IoT & infrastructure mapping
-   - [GitHub Dorks](github-dorks.md) - Credential & secret discovery
+![GitHub repo size](https://img.shields.io/github/repo-size/SnailSploit/AwersomeSnailOSint?style=flat-square&logo=github&color=blue)
+![Lines of code](https://img.shields.io/tokei/lines/github/SnailSploit/AwersomeSnailOSint?style=flat-square&color=green)
+![GitHub language count](https://img.shields.io/github/languages/count/SnailSploit/AwersomeSnailOSint?style=flat-square&color=purple)
+![Visitors](https://visitor-badge.laobi.icu/badge?page_id=SnailSploit.AwersomeSnailOSint&style=flat-square&color=yellow)
 
-2. **Investigation Methodology**: Read [Advanced OSINT Techniques](advanced-osint-techniques.md)
+</div>
 
-3. **Toolkits**: Jump to [OSINT Tools & Dashboards](#-osint-tools--dashboards)
+<br>
+
+<div align="center">
+
+## 🚀 Quick Start Guide
+
+</div>
+
+<table>
+<tr>
+<td width="50%" valign="top">
+
+### 🌱 For Beginners
+
+```mermaid
+graph LR
+    A[Start Here] --> B[OSINT Framework]
+    B --> C[Google Dorks]
+    C --> D[Social Media Intel]
+    D --> E[Practice Labs]
+    style A fill:#FFE66D
+    style E fill:#95E1D3
+```
+
+<br>
+
+> **Step-by-step learning path:**
+
+1. 📚 **Learn the Basics**
+   - [OSINT Framework](https://osintframework.com) - Understand the landscape
+   - Free courses on YouTube & TryHackMe
+
+2. 🔍 **Start Searching**
+   - [Google Dorks](google-dorks.md) - Web reconnaissance
+   - [Social Media Intelligence](https://www.social-searcher.com) - Profile hunting
+
+3. 🎯 **Practice**
+   - [TraceLabs](https://www.tracelabs.org/) - Real-world challenges
+   - [GeoGuessr](https://www.geoguessr.com/) - Geolocation skills
+
+4. 🤝 **Join Community**
+   - OSINT Curious Discord
+   - Reddit r/OSINT
+
+</td>
+<td width="50%" valign="top">
+
+### 🚀 For Professionals
+
+```mermaid
+graph TD
+    A[Advanced Path] --> B[Dork Collections]
+    A --> C[Methodologies]
+    A --> D[Automation]
+    B --> E[Deploy Tools]
+    C --> E
+    D --> E
+    style A fill:#FF6B6B
+    style E fill:#4ECDC4
+```
+
+<br>
+
+> **Advanced investigation workflow:**
+
+1. 🎯 **Master Dorking**
+   - [Google Dorks](google-dorks.md) - 500+ operators
+   - [Shodan Dorks](shodan-dorks.md) - IoT hunting
+   - [GitHub Dorks](github-dorks.md) - Secret discovery
+
+2. 📖 **Study Techniques**
+   - [Advanced OSINT Techniques](advanced-osint-techniques.md)
+   - IMINT, VIDINT, GEOINT mastery
+
+3. 🛠️ **Deploy Tools**
+   - [Automation Scripts](#-toolkits)
+   - API integrations
+   - Custom workflows
+
+4. 🔐 **Maintain OPSEC**
+   - VPN + Tor setup
+   - Compartmentalization
+   - Digital hygiene
+
+</td>
+</tr>
+</table>
+
+<br>
+
+<div align="center">
+
+### 💡 Pro Tips
+
+| Tip | Description |
+|-----|-------------|
+| 🎭 **Use Personas** | Create believable sock puppet accounts for social media investigation |
+| 📸 **Document Everything** | Screenshot + archive all findings with timestamps |
+| 🔄 **Cross-Reference** | Verify information across multiple sources |
+| ⏰ **Automate Monitoring** | Set up alerts for targets with Google Alerts, Visualping |
+| 🧩 **Pivot Intelligently** | One data point leads to many - follow the breadcrumbs |
+
+</div>
 
 ---
 
@@ -578,7 +751,18 @@
 
 ## 📚 Search Engine Dorks
 
-> **Expert-level search queries for finding sensitive information across the internet**
+<div align="center">
+
+> ### 🎯 **Expert-level search queries for finding sensitive information across the internet**
+
+<img src="https://img.shields.io/badge/Google-1000%2B_Dorks-4285F4?style=for-the-badge&logo=google&logoColor=white" />
+<img src="https://img.shields.io/badge/Shodan-IoT_Discovery-FF6347?style=for-the-badge&logo=shodan&logoColor=white" />
+<img src="https://img.shields.io/badge/GitHub-Secret_Hunting-181717?style=for-the-badge&logo=github&logoColor=white" />
+<img src="https://img.shields.io/badge/Censys-Infrastructure-00A4EF?style=for-the-badge&logo=microsoft-azure&logoColor=white" />
+
+</div>
+
+<br>
 
 ### 📚 Comprehensive Dork Collections
 
@@ -1001,7 +1185,55 @@ services.certificate:"example.com"
 
 ---
 
+<br>
+
+<div align="center">
+
+## 🏆 Hall of Fame - Top Resources
+
+**⭐ Most Popular Dork Collections**
+
+</div>
+
+<table align="center">
+<tr>
+<td align="center">
+<a href="google-dorks.md">
+<img src="https://img.shields.io/badge/🥇_Google_Dorks-500%2B_Queries-gold?style=for-the-badge&labelColor=1a1a1a" />
+<br><br>
+<b>Most Comprehensive</b>
+</a>
+</td>
+<td align="center">
+<a href="shodan-dorks.md">
+<img src="https://img.shields.io/badge/🥈_Shodan_Dorks-IoT_Master-silver?style=for-the-badge&labelColor=1a1a1a" />
+<br><br>
+<b>Most Technical</b>
+</a>
+</td>
+<td align="center">
+<a href="github-dorks.md">
+<img src="https://img.shields.io/badge/🥉_GitHub_Dorks-Secret_Finder-cd7f32?style=for-the-badge&labelColor=1a1a1a" />
+<br><br>
+<b>Most Practical</b>
+</a>
+</td>
+</tr>
+</table>
+
+<br>
+
+---
+
+<div align="center">
+
 ## 🤝 Contributing
+
+### **Help us make this the best OSINT resource on GitHub!**
+
+</div>
+
+<br>
 
 We love contributions! Here's how you can help make this resource even better:
 
@@ -1084,12 +1316,77 @@ Special thanks to:
 
 ---
 
-<div align="center">
-
 ### Made with 🐌 by PT-Snails
+
+<br>
+
+```ascii
+   ____                                      ____              _ _  _____ ____ _____ _   _ _____
+  / ___| _ __   __ _(_) |                  / ___| _ __   __ _(_) |/ / ____|_ _| ____| \ | |_   _|
+  \___ \| '_ \ / _` | | |                  \___ \| '_ \ / _` | | ' /|  _|  | ||  _| |  \| | | |
+   ___) | | | | (_| | | |                   ___) | | | | (_| | | . \| |___ | || |___| |\  | | |
+  |____/|_| |_|\__,_|_|_|                  |____/|_| |_|\__,_|_|_|\_\_____|___|_____|_| \_| |_|
+```
+
+<br>
+
+<img src="https://img.shields.io/badge/Maintained_by-PT--Snails-00D9FF?style=for-the-badge&logo=github&logoColor=white" />
+<img src="https://img.shields.io/badge/Made_with-❤️_&_☕-FF6B6B?style=for-the-badge" />
+<img src="https://img.shields.io/badge/Status-Active-success?style=for-the-badge&logo=statuspage&logoColor=white" />
+
+<br><br>
 
 **AwesomeSnailOSINT** - Your comprehensive OSINT resource hub
 
-[⬆ Back to Top](#awesomesnailosint)
+<br>
+
+### 🔗 Quick Links
+
+[🏠 Home](#-awesomesnailosint) •
+[📚 Dorks](google-dorks.md) •
+[🛠️ Tools](#-osint-tools--dashboards) •
+[🎓 Learn](#-training-and-learning) •
+[🤝 Contribute](#-contributing) •
+[⭐ Star Us](https://github.com/SnailSploit/AwersomeSnailOSint)
+
+<br>
+
+---
+
+<br>
+
+### 💬 Join the Community
+
+[![Discord](https://img.shields.io/badge/Discord-Join_Chat-7289DA?style=for-the-badge&logo=discord&logoColor=white)](https://discord.gg/osint)
+[![Twitter](https://img.shields.io/badge/Twitter-Follow-1DA1F2?style=for-the-badge&logo=twitter&logoColor=white)](https://twitter.com/search?q=%23OSINT)
+[![Reddit](https://img.shields.io/badge/Reddit-r/OSINT-FF4500?style=for-the-badge&logo=reddit&logoColor=white)](https://reddit.com/r/OSINT)
+[![Telegram](https://img.shields.io/badge/Telegram-Join_Channel-2CA5E0?style=for-the-badge&logo=telegram&logoColor=white)](https://t.me/osint)
+
+<br>
+
+---
+
+<br>
+
+### 📈 Project Growth
+
+![GitHub commit activity](https://img.shields.io/github/commit-activity/m/SnailSploit/AwersomeSnailOSint?style=flat-square&color=success)
+![GitHub last commit](https://img.shields.io/github/last-commit/SnailSploit/AwersomeSnailOSint?style=flat-square&color=blue)
+![GitHub pull requests](https://img.shields.io/github/issues-pr/SnailSploit/AwersomeSnailOSint?style=flat-square&color=yellow)
+![GitHub closed pull requests](https://img.shields.io/github/issues-pr-closed/SnailSploit/AwersomeSnailOSint?style=flat-square&color=purple)
+
+<br>
+
+**⭐ If this project helped you, please give it a star! ⭐**
+
+<br>
+
+[⬆️ Back to Top](#-awesomesnailosint)
+
+<br>
+
+---
+
+<sub>© 2024 AwesomeSnailOSINT. Licensed under MIT. All tools and resources belong to their respective owners.</sub>
 
 </div>
