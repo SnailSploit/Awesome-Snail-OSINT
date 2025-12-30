@@ -23,11 +23,12 @@
 
 <br>
 
-[![Quick Start](https://img.shields.io/badge/🚀_Quick_Start-Click_Here-00D9FF?style=for-the-badge)](#-quick-start)
-[![Dork Collections](https://img.shields.io/badge/📚_Dork_Collections-1000%2B_Queries-FF6B6B?style=for-the-badge)](#-comprehensive-dork-collections)
+[![Search Guide](https://img.shields.io/badge/🔎_Search_Guide-How_to_Find_Anything-9B59B6?style=for-the-badge)](SEARCH_GUIDE.md)
+[![Quick Start](https://img.shields.io/badge/🚀_Quick_Start-Begin_Here-00D9FF?style=for-the-badge)](#-quick-start-guide)
+[![Dork Collections](https://img.shields.io/badge/📚_Dorks-1000%2B_Queries-FF6B6B?style=for-the-badge)](#-comprehensive-dork-collections)
 [![Tools](https://img.shields.io/badge/🛠️_Tools-500%2B_Resources-4ECDC4?style=for-the-badge)](#-osint-tools--dashboards)
-[![Learning](https://img.shields.io/badge/🎓_Learning-Start_Here-FFE66D?style=for-the-badge)](#-training-and-learning)
-[![Contributing](https://img.shields.io/badge/🤝_Contributing-Help_Us-95E1D3?style=for-the-badge)](#-contributing)
+[![Learning](https://img.shields.io/badge/🎓_Learn-Start_Here-FFE66D?style=for-the-badge)](#-training-and-learning)
+[![Contributing](https://img.shields.io/badge/🤝_Contribute-Help_Us-95E1D3?style=for-the-badge)](#-contributing)
 
 <br>
 
@@ -332,6 +333,168 @@ graph TD
 - [Additional Awesome Repositories](#additional-awesome-repositories)
 
 </details>
+
+---
+
+<br>
+
+<div align="center">
+
+## 🔎 How to Use This Repository
+
+**Your Search Journey Starts Here**
+
+</div>
+
+<table>
+<tr>
+<td align="center" width="25%">
+<br>
+<h3>🎯 Step 1</h3>
+<h4>Choose Target</h4>
+<p>Select what you're investigating:<br>
+• Website/Domain<br>
+• Person/Email<br>
+• Device/Infrastructure<br>
+• Social Media Profile</p>
+</td>
+<td align="center" width="25%">
+<br>
+<h3>🛠️ Step 2</h3>
+<h4>Pick Tools</h4>
+<p>Navigate to section:<br>
+• <a href="#-search-engine-dorks">Search Dorks</a><br>
+• <a href="#-osint-tools--dashboards">OSINT Tools</a><br>
+• <a href="#-social-media-search">Social Media</a><br>
+• <a href="#-geo-tools">Geolocation</a></p>
+</td>
+<td align="center" width="25%">
+<br>
+<h3>📋 Step 3</h3>
+<h4>Execute Search</h4>
+<p>Follow methodology:<br>
+• Read examples<br>
+• Use operators<br>
+• Cross-reference<br>
+• Document all</p>
+</td>
+<td align="center" width="25%">
+<br>
+<h3>✅ Step 4</h3>
+<h4>Verify & Report</h4>
+<p>Validate intelligence:<br>
+• Multiple sources<br>
+• Verify timestamps<br>
+• Screenshot evidence<br>
+• Create report</p>
+</td>
+</tr>
+</table>
+
+<br>
+
+<div align="center">
+
+### 🎨 Quick Search by Category
+
+</div>
+
+<table>
+<tr>
+<td align="center" width="33%">
+
+**🌐 Web Investigation**
+
+[![Website Security](https://img.shields.io/badge/Website_Security-Scan-0078D4?style=flat-square)](#-website-security)
+[![Email Search](https://img.shields.io/badge/Email_Search-Find-EA4335?style=flat-square)](#-email-search)
+[![Domain Research](https://img.shields.io/badge/Domain_Research-Investigate-00A67E?style=flat-square)](#-research-and-investigative-tools)
+
+</td>
+<td align="center" width="33%">
+
+**👤 People & Social**
+
+[![Social Media](https://img.shields.io/badge/Social_Media-Profile-1DA1F2?style=flat-square)](#-social-media-search)
+[![Phone Numbers](https://img.shields.io/badge/Phone_Numbers-Lookup-34A853?style=flat-square)](#️-phone-numbers)
+[![Username Search](https://img.shields.io/badge/Username-Hunt-FF6B6B?style=flat-square)](#-social-media-search)
+
+</td>
+<td align="center" width="33%">
+
+**🔒 Security & Tech**
+
+[![Exploits](https://img.shields.io/badge/Exploits-CVE-FF0000?style=flat-square)](#-exploits)
+[![Dark Web](https://img.shields.io/badge/Dark_Web-TOR-7D4698?style=flat-square)](#-deep--dark-web)
+[![Crypto](https://img.shields.io/badge/Crypto-Blockchain-F7931A?style=flat-square)](#-crypto)
+
+</td>
+</tr>
+</table>
+
+<br>
+
+<div align="center">
+
+### 🔥 Popular Investigation Workflows
+
+</div>
+
+<table>
+<tr>
+<td width="50%">
+
+#### 🕵️ **Investigating a Person**
+
+```mermaid
+graph TD
+    A[👤 Target Person] --> B[Username Search]
+    A --> C[Email Search]
+    A --> D[Phone Lookup]
+    B --> E[Social Profiles]
+    C --> F[Data Breaches]
+    D --> G[Carrier Info]
+    E --> H[Compile Report]
+    F --> H
+    G --> H
+    style A fill:#FF6B6B
+    style H fill:#4ECDC4
+```
+
+**Tools to Use:**
+- [Social Media Search](#-social-media-search)
+- [Email Search](#-email-search)
+- [Phone Numbers](#️-phone-numbers)
+- [Username Checkers](#-social-media-search)
+
+</td>
+<td width="50%">
+
+#### 🌐 **Investigating a Domain**
+
+```mermaid
+graph TD
+    A[🌐 Target Domain] --> B[WHOIS Lookup]
+    A --> C[DNS Records]
+    A --> D[Subdomain Scan]
+    B --> E[Owner Details]
+    C --> F[Infrastructure]
+    D --> G[Attack Surface]
+    E --> H[Compile Report]
+    F --> H
+    G --> H
+    style A fill:#FFE66D
+    style H fill:#95E1D3
+```
+
+**Tools to Use:**
+- [Website Security](#-website-security)
+- [Research Tools](#-research-and-investigative-tools)
+- [Google Dorks](google-dorks.md)
+- [Shodan Dorks](shodan-dorks.md)
+
+</td>
+</tr>
+</table>
 
 ---
 
