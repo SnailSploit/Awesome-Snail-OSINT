@@ -490,6 +490,7 @@ A Great Collection of OSINT tools, By PT-Snails.
 - [Google Dorks List](https://www.exploit-db.com/google-dorks)
 - [FOFA](https://fofa.so)
 - [BuiltWith Technology Lookup](https://builtwith.com)
+- [looot-techstack: Website Technology Lookup Across Providers](https://github.com/loootai/looot-techstack)
 - [SpyOnWeb](https://spyonweb.com)
 
 ---
