@@ -8,13 +8,17 @@ The original [Markdown directory](README.md) and specialized reference documents
 
 **[Open Snail OSINT Atlas](https://snail-osint-atlas.pages.dev/)** — no installation required.
 
+## Executable research
+
+The [Synthesis lab](https://snail-osint-atlas.pages.dev/#view=synthesis) computes three experimental research combinations. Read [the implemented rules and limits](docs/synthesis.md). The [public-record runner](https://snail-osint-atlas.pages.dev/#view=run) separately collects bounded DNS, registration and routing observations; see [execution documentation](docs/execution.md). The original ten authored playbooks remain manual references.
+
 ## Run locally
 
-Requires Python 3.10 or newer. The website itself has no framework, package manager, third-party fonts, analytics or runtime CDN dependency.
+Requires Python 3.10 or newer and Node 22 for the local API server. The website itself has no framework, package manager, third-party fonts, analytics or runtime CDN dependency.
 
 ```bash
 python3 scripts/build_atlas.py
-python3 -m http.server 8080 --directory _site
+node scripts/serve_atlas.mjs
 ```
 
 Open `http://localhost:8080/`. Opening an HTML file directly is not supported: the catalog is loaded as a same-origin JSON file.
@@ -46,7 +50,7 @@ A documentation review is not proof that every service, endpoint, pricing tier o
 
 ```bash
 python3 -m unittest discover -s tests -v
-node --test tests/core.test.mjs
+node --test tests/*.test.mjs
 node --check site/app.mjs
 python3 scripts/build_atlas.py
 ```
@@ -73,7 +77,7 @@ or deployment branch is needed.
 Build command:
 
 ```bash
-python3 scripts/check_docs.py && python3 scripts/build_atlas.py && python3 -m unittest discover -s tests -v && node --test tests/core.test.mjs
+python3 scripts/check_docs.py && python3 scripts/build_atlas.py && python3 -m unittest discover -s tests -v && node --test tests/*.test.mjs
 ```
 
 The deployment uses Python 3.12 and Node 22. The separate **Atlas quality** GitHub
@@ -93,7 +97,7 @@ and `X-Content-Type-Options: nosniff`. Frame-ancestor policy cannot be enforced 
 
 ## Privacy and evidence boundaries
 
-No target lookup is performed automatically. Query generation is local; clicking an external search sends the query to that provider. A source hyperlink opens a third-party site with its own policies.
+No target lookup runs on page load. Confirmed live investigations send scoped inputs to their listed providers. Synthesis imports and document analysis remain local. Query generation is local; clicking an external search sends the query to that provider. A source hyperlink opens a third-party site with its own policies.
 
 The caseboard stores source/chain IDs, not private case notes or target values. Storage is not encrypted. Treat shared browsers accordingly.
 
@@ -101,6 +105,6 @@ The hash tool reads file bytes locally and supports files up to 25 MiB. An expor
 
 ## Research design
 
-The product's differentiator is **an explicit next step with an explicit reason it could be wrong**. These are manually authored playbooks, not an autonomous investigation agent, a graph of discovered real-world relationships, or an AI-generated evidence engine.
+The product's differentiator is **an explicit next step with an explicit reason it could be wrong**. The reference playbooks remain manually authored. The executable runner and synthesis lab separately produce source-backed observations and deterministic experimental findings; neither is an autonomous agent or a guarantee of novel intelligence.
 
 Future quality should be measured through reproducible public case studies, dated source rechecks, successful dead-end recovery, accessibility testing and documented corrections, rather than unsupported claims of being the largest or best directory.

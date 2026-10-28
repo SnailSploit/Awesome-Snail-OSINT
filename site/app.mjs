@@ -1,3 +1,5 @@
+import { mountSynthesis } from './synthesis.mjs';
+import { mountInvestigation } from './investigate.mjs';
 import { REVIEWED, safeURL, search, makeQuery, loadPins, exportBoard, sha256 } from './core.mjs';
 const $ = s => document.querySelector(s);
 const $$ = s => [...document.querySelectorAll(s)];
@@ -49,17 +51,19 @@ function chainCard(c,i){
 }
 function craftCard(t,i){return h('article',{class:'card craftcard','data-craft':t.id},h('div',{class:'cardtop'},h('span',{class:'craftnumber'},'FIELD NOTE / '+String(i+1).padStart(2,'0')),h('span',{class:'category'},t.category)),h('h3',{},t.title),h('p',{},t.body),h('div',{class:'craftrefs'},...t.sources.map(sourceRef)));}
 function writeHash(){const p=new URLSearchParams({view:state.view});for(const k of ['query','category','review','access'])if(state[k])p.set(k,state[k]);history.replaceState(null,'','#'+p.toString());}
-function readHash(){const p=new URLSearchParams(location.hash.slice(1));state.view=['atlas','chains','fieldcraft','lab'].includes(p.get('view'))?p.get('view'):'atlas';for(const k of ['query','category','review','access'])state[k]=(p.get(k)||'').slice(0,150);}
+function readHash(){const p=new URLSearchParams(location.hash.slice(1));state.view=['atlas','chains','fieldcraft','lab','run','synthesis'].includes(p.get('view'))?p.get('view'):'atlas';for(const k of ['query','category','review','access'])state[k]=(p.get(k)||'').slice(0,150);}
 function itemsForView(){return state.view==='atlas'?data.resources:state.view==='chains'?data.chains:data.fieldcraft;}
 function renderCategories(items){const names=[...new Set(items.map(r=>r.category))].sort();const wrap=$('#categoryFilters');wrap.replaceChildren(...['',...names].map(name=>h('button',{class:'filter'+(state.category===name?' active':''),'aria-pressed':state.category===name,onClick:()=>{state.category=name;state.limit=24;render();}},name||'All disciplines',h('span',{},name?items.filter(r=>r.category===name).length:items.length))));}
 function render(){
-  const copy={atlas:['01 / DISCOVERY','The source atlas.','Know what a source can tell you. And what it cannot.'],chains:['02 / CONNECT THE DOTS','Investigation chains.','Every pivot has an output, a failure condition and a fallback. No blind leaps.'],fieldcraft:['03 / BETTER QUESTIONS','Small tricks. Better findings.','Practical research habits that reduce noise, false joins and false certainty.'],lab:['04 / WORKING TOOLS','A little less busywork.','Scoped query recipes and local evidence hashing. Nothing runs against a target automatically.']}[state.view];
+  const copy={synthesis:['06 / COMPOSE & CHALLENGE','The synthesis lab.','Combine evidence. Challenge the connection. Keep the reasoning inspectable.'],run:['05 / EXECUTE & VERIFY','Live investigations.','Real provider lookups. Every relationship has a source, timestamp and limit.'],atlas:['01 / DISCOVERY','The source atlas.','Know what a source can tell you. And what it cannot.'],chains:['02 / CONNECT THE DOTS','Investigation chains.','Every pivot has an output, a failure condition and a fallback. No blind leaps.'],fieldcraft:['03 / BETTER QUESTIONS','Small tricks. Better findings.','Practical research habits that reduce noise, false joins and false certainty.'],lab:['04 / WORKING TOOLS','A little less busywork.','Scoped query recipes and local evidence hashing. Nothing runs against a target automatically.']}[state.view];
   $('#hero').hidden=state.view!=='atlas';$('#sectionEyebrow').textContent=copy[0];$('#sectionTitle').textContent=copy[1];$('#sectionDescription').textContent=copy[2];
   $$('.navitem').forEach(b=>{b.classList.toggle('active',b.dataset.view===state.view);if(b.dataset.view===state.view)b.setAttribute('aria-current','page');else b.removeAttribute('aria-current');});
-  $('#searchControls').hidden=state.view==='lab';$('.resultshead').hidden=state.view==='lab';$('#layoutToggle').hidden=state.view!=='atlas';
+  $('#searchControls').hidden=['lab','run','synthesis'].includes(state.view);$('.resultshead').hidden=['lab','run','synthesis'].includes(state.view);$('#layoutToggle').hidden=state.view!=='atlas';
   $('#reviewFilter').parentElement.hidden=state.view!=='atlas';$('#accessFilter').parentElement.hidden=state.view!=='atlas';
   $('#search').value=state.query;$('#reviewFilter').value=state.review;$('#accessFilter').value=state.access;
   $('#results').className='cards'+(state.list&&state.view==='atlas'?' list':'');$('#results').setAttribute('aria-busy','false');
+  if(state.view==='synthesis'){mountSynthesis($('#results'));$('#loadMore').hidden=true;writeHash();return;}
+  if(state.view==='run'){mountInvestigation($('#results'));$('#loadMore').hidden=true;writeHash();return;}
   if(state.view==='lab'){renderLab();$('#loadMore').hidden=true;writeHash();return;}
   const items=itemsForView();renderCategories(items);
   const filtered=search(items,state.query,{category:state.category,review:state.view==='atlas'?state.review:'',access:state.view==='atlas'?state.access:''});
@@ -147,7 +151,7 @@ function bind(){
   $$('.dialogclose').forEach(b=>b.addEventListener('click',()=>b.closest('dialog').close()));
   $$('dialog').forEach(d=>d.addEventListener('click',e=>{const r=d.getBoundingClientRect();if(e.target===d&&(e.clientX<r.left||e.clientX>r.right||e.clientY<r.top||e.clientY>r.bottom))d.close();}));
   window.addEventListener('hashchange',()=>{readHash();render();});
-  document.addEventListener('keydown',e=>{const typing=/INPUT|TEXTAREA|SELECT/.test(document.activeElement?.tagName||'');if((e.ctrlKey||e.metaKey)&&e.key.toLowerCase()==='k'){e.preventDefault();showPalette();}else if(e.key==='/'&&!typing&&!$('dialog[open]')){e.preventDefault();if(state.view==='lab')setView('atlas');$('#search').focus();}});
+  document.addEventListener('keydown',e=>{const typing=/INPUT|TEXTAREA|SELECT/.test(document.activeElement?.tagName||'');if((e.ctrlKey||e.metaKey)&&e.key.toLowerCase()==='k'){e.preventDefault();showPalette();}else if(e.key==='/'&&!typing&&!$('dialog[open]')){e.preventDefault();if(['lab','run','synthesis'].includes(state.view))setView('atlas');$('#search').focus();}});
 }
 async function start(){
   try{

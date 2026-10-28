@@ -12,6 +12,27 @@
 
 Counts reflect the catalog when this preview was generated, not live-service verification. Imported legacy sources remain clearly marked **unreviewed**.
 
+## Executable synthesis: connect evidence, reject false joins
+
+**[OPEN THE SYNTHESIS LAB](https://snail-osint-atlas.pages.dev/#view=synthesis)**
+
+Three implemented research combinations now produce inspectable findings, rejected connections,
+rule identifiers and exportable evidence reports:
+
+| Combination | What actually runs |
+| --- | --- |
+| **Trust after the transition** | Collect Android association statements for up to four domains; compare exact app/signing identities and imported before/after snapshots. |
+| **Independent reports, shared ancestry?** | Analyze local text and XMP, subtract template controls, and test combined lineage/text evidence. Local PDF extractor included. |
+| **Different brands, shared operations?** | Combine namespaced advertising declarations with repeated release transitions and controls from imported or locally collected histories. |
+
+No automatic target queries, fake live results or ownership verdicts. Synthetic challenges are explicitly
+labelled and use the same rules as real evidence. Historical collection and real-world novelty validation
+are not automatic. [Rules, input schemas, collectors and limits](docs/synthesis.md).
+
+**[Live public-record runner](https://snail-osint-atlas.pages.dev/#view=run)** also executes bounded DNS,
+registration and routing workflows with provenance-linked graphs and actual observation exports.
+These basic workflows are infrastructure context, not a claim of unique intelligence. [Runner details](docs/execution.md).
+
 ## The investigation atlas
 
 A working research interface, not just a reskinned README. The entire application,

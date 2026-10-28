@@ -1,0 +1,10 @@
+{
+  "schemaVersion": 1,
+  "technique": "operational-continuity",
+  "targets": [
+    {"domain": "alpha.example.com", "role": "subject", "releases": [{"path": "/assets/app.js", "channel": "application-js", "commonDependency": false}]},
+    {"domain": "beta.example.com", "role": "subject", "releases": [{"path": "/assets/app.js", "channel": "application-js", "commonDependency": false}]},
+    {"domain": "control.example.com", "role": "control", "releases": [{"path": "/assets/app.js", "channel": "application-js", "commonDependency": false}]}
+  ],
+  "sellerSystems": ["exchange.example.com"]
+}
