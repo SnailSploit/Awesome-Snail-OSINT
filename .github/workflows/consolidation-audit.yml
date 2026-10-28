@@ -1,45 +1,129 @@
-name: Consolidation audit
+name: Consolidate into main
 on:
   push:
     branches: [claude/improve-code-quality-7yl4o]
     paths: [.github/workflows/consolidation-audit.yml]
 permissions:
   contents: read
+concurrency:
+  group: osint-main-consolidation
+  cancel-in-progress: false
 jobs:
-  inspect:
+  consolidate:
+    if: github.repository == 'SnailSploit/Awesome-Snail-OSINT'
     runs-on: ubuntu-latest
-    timeout-minutes: 5
+    timeout-minutes: 15
+    permissions:
+      contents: write
     steps:
       - uses: actions/checkout@v4
         with:
           fetch-depth: 0
           persist-credentials: false
-      - name: Preserve branch history and inspect the merge
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+      - name: Resolve only the reviewed conflict against pinned main
         shell: bash
         run: |
           set -euo pipefail
-          mkdir -p /tmp/osint-consolidation
-          git bundle create /tmp/osint-consolidation/source.bundle --all
-          git show-ref > /tmp/osint-consolidation/refs.txt
+          main=22ca4ba3c6b37efd2e3fea2e965dca58a6c14228
+          source_ref=refs/heads/claude/improve-code-quality-7yl4o
+          test "$(git ls-remote origin refs/heads/main | cut -f1)" = "$main"
+          test "$(git ls-remote origin "$source_ref" | cut -f1)" = "$GITHUB_SHA"
+          git merge-base --is-ancestor 26aa3615445104c9e7594a2bdf36c07ec6f388e6 "$GITHUB_SHA"
+          cp scripts/reconcile_main_once.py /tmp/reconcile_main_once.py
           git config user.name 'github-actions[bot]'
           git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
-          git checkout --detach 22ca4ba3c6b37efd2e3fea2e965dca58a6c14228
+          git checkout --detach "$main"
           set +e
-          git merge --no-commit --no-ff 26aa3615445104c9e7594a2bdf36c07ec6f388e6
+          git merge --no-commit --no-ff "$GITHUB_SHA"
           status=$?
           set -e
           if [ "$status" -gt 1 ]; then exit "$status"; fi
-          git diff --name-only --diff-filter=U | tee /tmp/osint-consolidation/conflicts.txt
-          cp README.md /tmp/osint-consolidation/README.merge.md
-          python3 - <<'PY'
-          import pathlib, re
-          text = pathlib.Path('README.md').read_text()
-          for index, block in enumerate(re.findall(r'^<<<<<<< .*?^>>>>>>> .*?$', text, re.M | re.S), 1):
-              print(f'--- CONFLICT {index} ---')
-              print(block)
-          PY
-      - uses: actions/upload-artifact@v4
+          test "$(git diff --name-only --diff-filter=U)" = README.md
+          python3 /tmp/reconcile_main_once.py
+          git add -A
+          test -z "$(git diff --name-only --diff-filter=U)"
+          git diff --cached --check
+          test "$(git write-tree)" = 551057f913d357e23aff1c581d2f41af6a510cf0
+          git diff --cached --stat
+      - name: Validate documentation and build the complete catalog
+        run: |
+          python3 scripts/check_docs.py
+          python3 scripts/build_atlas.py
+      - name: Run Python and JavaScript regression tests
+        run: |
+          python3 -m unittest discover -s tests -v
+          node --check site/app.mjs
+          node --test tests/core.test.mjs
+      - name: Install browser test dependencies
+        run: |
+          python3 -m pip install playwright==1.57.0
+          python3 -m playwright install --with-deps chromium
+      - name: Run full HTTP and browser interaction tests
+        run: python3 scripts/browser_smoke.py
+      - name: Publish the verified merge without rewriting main history
+        env:
+          GH_TOKEN: ${{ github.token }}
+        shell: bash
+        run: |
+          set -euo pipefail
+          main=22ca4ba3c6b37efd2e3fea2e965dca58a6c14228
+          test "$(git write-tree)" = 551057f913d357e23aff1c581d2f41af6a510cf0
+          test "$(git ls-remote origin refs/heads/main | cut -f1)" = "$main"
+          test "$(git ls-remote origin refs/heads/claude/improve-code-quality-7yl4o | cut -f1)" = "$GITHUB_SHA"
+          git diff --exit-code
+          git commit -m 'Merge code-quality work into main; preserve Atlas UI and complete history'
+          git merge-base --is-ancestor "$main" HEAD
+          git merge-base --is-ancestor "$GITHUB_SHA" HEAD
+          header="AUTHORIZATION: basic $(printf 'x-access-token:%s' "$GH_TOKEN" | base64 -w0)"
+          echo "::add-mask::$header"
+          git config --local http.https://github.com/.extraheader "$header"
+          trap 'git config --local --unset-all http.https://github.com/.extraheader || true' EXIT
+          git push origin HEAD:refs/heads/main
+          test "$(git ls-remote origin refs/heads/main | cut -f1)" = "$(git rev-parse HEAD)"
+          printf 'MAIN_COMMIT=%s\nVERIFIED_TREE=%s\n' "$(git rev-parse HEAD)" "$(git write-tree)" | tee /tmp/consolidation-result.txt
+          printf '## Consolidated main\n\nCommit: `%s`\n\nAll content tests and browser checks passed before publication.\n' "$(git rev-parse HEAD)" >> "$GITHUB_STEP_SUMMARY"
+      - name: Delete only the three absorbed branches with expected-head leases
+        env:
+          GH_TOKEN: ${{ github.token }}
+        shell: bash
+        run: |
+          set -euo pipefail
+          branches=(chore/osint-repository-refresh-2026-10 feat/osint-investigation-atlas claude/improve-code-quality-7yl4o)
+          heads=(646a089960a3b93bf25eae9bfcae6547923a1a59 4b4657c5393327ca47f54d752caebcd216e5f04a "$GITHUB_SHA")
+          leases=()
+          refspecs=()
+          for i in "${!branches[@]}"; do
+            ref="refs/heads/${branches[$i]}"
+            expected="${heads[$i]}"
+            test "$ref" != refs/heads/main
+            test "$(git ls-remote origin "$ref" | cut -f1)" = "$expected"
+            git merge-base --is-ancestor "$expected" HEAD
+            leases+=("--force-with-lease=$ref:$expected")
+            refspecs+=(":$ref")
+          done
+          test "$(git ls-remote origin refs/heads/main | cut -f1)" = "$(git rev-parse HEAD)"
+          header="AUTHORIZATION: basic $(printf 'x-access-token:%s' "$GH_TOKEN" | base64 -w0)"
+          echo "::add-mask::$header"
+          git config --local http.https://github.com/.extraheader "$header"
+          trap 'git config --local --unset-all http.https://github.com/.extraheader || true' EXIT
+          git push --atomic "${leases[@]}" origin "${refspecs[@]}"
+          git ls-remote --heads origin | tee -a /tmp/consolidation-result.txt
+          test "$(git ls-remote --heads origin | cut -f2)" = refs/heads/main
+          printf '\nOnly `main` remains. All deleted branch heads are ancestors of the consolidated commit.\n' >> "$GITHUB_STEP_SUMMARY"
+      - name: Preserve verification evidence
+        if: always()
+        uses: actions/upload-artifact@v4
         with:
-          name: osint-consolidation-inputs
-          path: /tmp/osint-consolidation/
-          retention-days: 3
+          name: main-consolidation-verification
+          path: |
+            .browser-test/
+            /tmp/consolidation-result.txt
+          include-hidden-files: true
+          if-no-files-found: warn
+          retention-days: 14
