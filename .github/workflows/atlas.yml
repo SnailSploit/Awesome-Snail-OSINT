@@ -12,31 +12,43 @@ jobs:
     timeout-minutes: 12
     steps:
       - uses: actions/checkout@v4
+        with:
+          persist-credentials: false
       - uses: actions/setup-python@v5
         with:
           python-version: '3.12'
       - uses: actions/setup-node@v4
         with:
           node-version: '22'
-      - name: Validate and build the complete catalog
-        run: python3 scripts/build_atlas.py
-      - name: Python regression tests
-        run: python3 -m unittest discover -s tests -v
-      - name: JavaScript regression tests
+      - name: Validate documentation and build the complete catalog
+        run: |
+          python3 scripts/check_docs.py
+          python3 scripts/build_atlas.py
+      - name: Python regression tests including bounded PDF extraction
+        run: |
+          python3 -m pip install pypdf==5.9.0
+          python3 -m unittest discover -s tests -v
+      - name: JavaScript rules, collectors and execution regression tests
         run: |
           node --check site/app.mjs
-          node --test tests/core.test.mjs
+          node --check site/synthesis.mjs
+          node --check server/synthesis.mjs
+          node --check server/engine.mjs
+          node --test tests/*.test.mjs
       - name: Install browser test dependencies
         run: |
           python3 -m pip install playwright==1.57.0
           python3 -m playwright install --with-deps chromium
-      - name: Real-browser interaction tests
-        run: python3 scripts/browser_smoke.py
-      - name: Upload deployable static site
+      - name: Real-browser catalog, execution and synthesis interaction tests
+        run: |
+          python3 scripts/browser_smoke.py
+          python3 scripts/execution_browser_smoke.py
+          python3 scripts/synthesis_browser_smoke.py
+      - name: Upload built static UI (live collectors also require Functions)
         if: success()
         uses: actions/upload-artifact@v4
         with:
-          name: snail-osint-atlas
+          name: snail-osint-atlas-static-ui
           path: _site/
           include-hidden-files: true
       - name: Upload browser evidence
