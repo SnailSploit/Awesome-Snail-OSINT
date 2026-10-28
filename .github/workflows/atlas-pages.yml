@@ -1,0 +1,43 @@
+name: Publish atlas to Pages
+# Manual only. Enable Settings > Pages > Source > GitHub Actions first.
+on:
+  workflow_dispatch:
+permissions:
+  contents: read
+concurrency:
+  group: atlas-pages
+  cancel-in-progress: false
+jobs:
+  build:
+    if: github.ref == 'refs/heads/main'
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+      - run: |
+          python3 scripts/build_atlas.py
+          python3 -m unittest discover -s tests -v
+          node --test tests/core.test.mjs
+      - uses: actions/configure-pages@v5
+      - uses: actions/upload-pages-artifact@v3
+        with:
+          path: _site
+  deploy:
+    needs: build
+    runs-on: ubuntu-latest
+    permissions:
+      pages: write
+      id-token: write
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    steps:
+      - name: Publish static atlas
+        id: deployment
+        uses: actions/deploy-pages@v4

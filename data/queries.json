@@ -1,0 +1,8 @@
+[
+{"id":"ct-domain","name":"Certificate identities","engine":"crt.sh","input":"domain","template":"https://crt.sh/?q=%25.{domain}","kind":"url","reference":"crt","note":"Public certificate names; not proof of ownership or a live service."},
+{"id":"urlscan-domain","name":"Existing scan records","engine":"urlscan","input":"domain","template":"page.domain:{domain}","kind":"text","launch":"https://urlscan.io/search/#","reference":"urlscan","note":"Search only. This does not submit a new scan."},
+{"id":"shodan-domain","name":"Indexed hostnames","engine":"Shodan","input":"domain","template":"hostname:\"{domain}\"","kind":"text","launch":"https://www.shodan.io/search?query=","reference":"shodan","note":"Indexed banners can be stale; account and feature limits apply."},
+{"id":"wayback-domain","name":"Capture timeline","engine":"Wayback","input":"domain","template":"https://web.archive.org/web/*/{domain}/*","kind":"url","reference":"wayback","note":"Capture coverage is incomplete; earliest capture is not first publication."},
+{"id":"github-org","name":"Public README claims","engine":"GitHub","input":"organization","template":"org:{organization} path:README.md","kind":"text","launch":"https://github.com/search?type=code&q=","reference":"github","note":"Restrict to an authorized or public organization; pin findings to a commit."},
+{"id":"github-license","name":"Public license files","engine":"GitHub","input":"organization","template":"org:{organization} path:LICENSE","kind":"text","launch":"https://github.com/search?type=code&q=","reference":"github","note":"Read the actual license; a filename is not a legal conclusion."}
+]
