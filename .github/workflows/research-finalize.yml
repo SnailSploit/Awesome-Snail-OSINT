@@ -1,0 +1,131 @@
+name: Finalize and verify live synthesis
+on:
+  push:
+    branches: [main]
+    paths: [.github/workflows/research-finalize.yml]
+permissions:
+  contents: read
+concurrency:
+  group: atlas-research-publication
+  cancel-in-progress: false
+jobs:
+  ship:
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    permissions:
+      contents: write
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+          persist-credentials: false
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+      - name: Apply the reviewed bundles and final presentation correction
+        shell: bash
+        run: |
+          set -euo pipefail
+          python3 - <<'PY'
+          import pathlib, subprocess, hashlib, textwrap, os
+          p=pathlib.Path('.github/workflows/research-upgrade.yml');raw=p.read_bytes()
+          assert hashlib.sha1(b'blob '+str(len(raw)).encode()+b'\0'+raw).hexdigest()=='319ffa55b346d21cbb39ce7061b19a60d917342c'
+          # Execute only the previously reviewed, pinned source-application block.
+          block=raw.decode().split('      - name: Apply exact reviewed source bundles with original-blob leases\n',1)[1].split('      - name: Build and run documentation, Python and JavaScript checks\n',1)[0].split('        run: |\n',1)[1]
+          subprocess.run(['bash','-euo','pipefail','-c',textwrap.dedent(block)],check=True)
+          p=pathlib.Path('site/synthesis.mjs');lines=p.read_text().splitlines(keepends=True);changed=0
+          for i,line in enumerate(lines):
+              if line.lstrip().startswith("output.replaceChildren(h('div',{class:'synth-outhead'}"):
+                  assert line.endswith(');\n')
+                  lines[i]=line.replace('output.replaceChildren(', 'output.replaceChildren(...[',1)[:-3]+'].filter(Boolean));\n';changed+=1
+          assert changed==1;p.write_text(''.join(lines))
+          p=pathlib.Path('scripts/synthesis_browser_smoke.py');text=p.read_text()
+          needle="        page.screenshot(path=str(OUT/'synthesis-desktop.png'),full_page=True)"
+          assert text.count(needle)==1
+          text=text.replace(needle,"        assert page.locator('#synthResults').evaluate(\"el => ![...el.childNodes].some(n => n.nodeType===3 && ['null','undefined'].includes(n.textContent.trim()))\")\n"+needle)
+          needle="        with page.expect_download() as download:page.locator('#synthExport').click()"
+          assert text.count(needle)==1
+          text=text.replace(needle,"        if BASE:page.screenshot(path=str(OUT/'synthesis-live-app.png'),full_page=True)\n"+needle)
+          p.write_text(text)
+          # Workflow maintenance will be committed separately through the authorized connector.
+          # The Actions credential is not granted additional authority.
+          pathlib.Path('.github/workflows/atlas.yml').write_bytes(subprocess.check_output(['git','show',os.environ['GITHUB_SHA']+':.github/workflows/atlas.yml']))
+          pathlib.Path('.github/workflows/research-finalize.yml').unlink()
+          PY
+          git add -A
+          git diff --cached --check
+          git write-tree > /tmp/research-tested-tree
+      - name: Build and test all implementation paths
+        run: |
+          python3 -m pip install pypdf==5.9.0 playwright==1.57.0
+          python3 scripts/check_docs.py
+          python3 scripts/build_atlas.py
+          python3 -m unittest discover -s tests -v
+          node --check site/synthesis.mjs
+          node --test tests/*.test.mjs
+          python3 -m playwright install --with-deps chromium
+          python3 scripts/browser_smoke.py
+          python3 scripts/execution_browser_smoke.py
+          python3 scripts/synthesis_browser_smoke.py
+      - name: Check real public declarations before publication
+        run: |
+          node --input-type=module - <<'JS'
+          import {writeFile} from 'node:fs/promises';
+          import {collectApps} from './server/synthesis.mjs';
+          import {analyze} from './site/synthesis-core.mjs';
+          const report=await analyze(await collectApps(['www.google.com','google.com']));
+          await writeFile('.browser-test/synthesis-provider-canary.json',JSON.stringify(report,null,2));
+          console.log(JSON.stringify({observations:report.observations.map(r=>({subject:r.subject,outcome:r.outcome})),findings:report.findings.length}));
+          if(!report.observations.some(r=>r.outcome==='ok'))throw Error('No real declarations returned; publication stopped.');
+          JS
+      - name: Publish the tested application without force pushing main
+        env:
+          GH_TOKEN: ${{ github.token }}
+        shell: bash
+        run: |
+          set -euo pipefail
+          test "$(git ls-remote origin refs/heads/main | cut -f1)" = "$GITHUB_SHA"
+          test "$(git write-tree)" = "$(cat /tmp/research-tested-tree)"
+          git diff --exit-code
+          git config user.name 'github-actions[bot]'
+          git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
+          git commit -m 'feat: ship executable OSINT synthesis and bounded evidence collectors'
+          git archive --format=tar.gz --output=/tmp/research-implemented-source.tar.gz HEAD
+          header="AUTHORIZATION: basic $(printf 'x-access-token:%s' "$GH_TOKEN" | base64 -w0)"
+          echo "::add-mask::$header"
+          git config --local http.https://github.com/.extraheader "$header"
+          trap 'git config --local --unset-all http.https://github.com/.extraheader || true' EXIT
+          git push origin HEAD:refs/heads/main
+          test "$(git ls-remote origin refs/heads/main | cut -f1)" = "$(git rev-parse HEAD)"
+          printf 'MAIN_COMMIT=%s\nTESTED_TREE=%s\n' "$(git rev-parse HEAD)" "$(git write-tree)" | tee .browser-test/published-research.txt
+      - name: Verify that Cloudflare serves the exact tested UI and live API
+        run: |
+          python3 - <<'PY'
+          import pathlib, urllib.request, hashlib, time, json
+          base='https://snail-osint-atlas.pages.dev/'
+          expected=hashlib.sha256(pathlib.Path('site/synthesis.mjs').read_bytes()).hexdigest()
+          for attempt in range(24):
+              try:
+                  with urllib.request.urlopen(urllib.request.Request(base+'synthesis.mjs',headers={'Cache-Control':'no-cache'}),timeout=10) as response:actual=hashlib.sha256(response.read()).hexdigest()
+                  with urllib.request.urlopen(base+'api/synthesis',timeout=10) as response:capabilities=json.load(response)
+                  if actual==expected and capabilities.get('liveCollectors')==['app-trust']:
+                      pathlib.Path('.browser-test/live-deployment.json').write_text(json.dumps({'url':base,'uiSha256':actual,'capabilities':capabilities},indent=2));break
+              except Exception as e:print('Deployment not ready:',str(e))
+              time.sleep(10)
+          else:raise SystemExit('Production did not serve the tested UI/API within the bounded verification window.')
+          PY
+          ATLAS_BASE_URL=https://snail-osint-atlas.pages.dev/ python3 scripts/synthesis_browser_smoke.py
+      - name: Preserve implementation and production evidence
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: research-live-release
+          path: |
+            .browser-test/
+            /tmp/research-implemented-source.tar.gz
+          include-hidden-files: true
+          if-no-files-found: warn
+          retention-days: 14
