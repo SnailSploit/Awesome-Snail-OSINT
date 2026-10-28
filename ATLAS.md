@@ -4,6 +4,10 @@
 
 The original [Markdown directory](README.md) and specialized reference documents remain intact. The atlas is a new interface, not a replacement or a claim that every old listing has been verified.
 
+## Live workspace
+
+**[Open Snail OSINT Atlas](https://snail-osint-atlas.pages.dev/)** — no installation required.
+
 ## Run locally
 
 Requires Python 3.10 or newer. The website itself has no framework, package manager, third-party fonts, analytics or runtime CDN dependency.
@@ -59,9 +63,33 @@ CI builds the complete catalog, runs regression tests, then checks real browser 
 
 ## Publish
 
-After merging, enable **Settings > Pages > Build and deployment > Source: GitHub Actions**. Run **Publish atlas to Pages** on `main`. Publication is manual; merely adding this workflow does not deploy anything. The deploy job is restricted to `main` and uses a separate Pages environment.
+**Live site: [https://snail-osint-atlas.pages.dev/](https://snail-osint-atlas.pages.dev/)**
 
-Alternatively, build and serve `_site/` from any static host. All asset URLs are relative, so project subpaths are supported. For hosts with configurable headers, also set `Content-Security-Policy: frame-ancestors 'none'` and `X-Content-Type-Options: nosniff`. Frame-ancestor policy cannot be enforced by an HTML meta tag.
+Cloudflare Pages project `snail-osint-atlas` is connected directly to
+`SnailSploit/Awesome-Snail-OSINT`, production branch **main**. Successful main-branch
+builds publish `_site/`; preview-branch deployments are disabled. No second repository
+or deployment branch is needed.
+
+Build command:
+
+```bash
+python3 scripts/check_docs.py && python3 scripts/build_atlas.py && python3 -m unittest discover -s tests -v && node --test tests/core.test.mjs
+```
+
+The deployment uses Python 3.12 and Node 22. The separate **Atlas quality** GitHub
+workflow also performs full HTTP/Chromium interaction checks. Cloudflare's build
+command above does not run those browser checks.
+
+The existing **Publish atlas to Pages** GitHub workflow remains an optional,
+manual alternative. It requires enabling GitHub Pages first; it is not the production
+host above. All assets use relative URLs, so project subpaths are supported.
+
+Repository previews can be refreshed by running **Refresh Atlas showcase** on main.
+That workflow builds and tests the site, takes real browser screenshots, and updates
+only the README, hosting documentation and two preview PNGs. It does not rewrite history.
+
+For hosts with configurable headers, set `Content-Security-Policy: frame-ancestors 'none'`
+and `X-Content-Type-Options: nosniff`. Frame-ancestor policy cannot be enforced by an HTML meta tag.
 
 ## Privacy and evidence boundaries
 

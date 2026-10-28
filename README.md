@@ -1,25 +1,47 @@
-# 🐌 Awesome Snail OSINT
+# Snail OSINT / The Investigation Atlas
 
-**An open-source intelligence field reference: tools, search operators, collection techniques, and investigative methodology.**
+### Follow the evidence. Not another wall of links.
 
-[![Stars](https://img.shields.io/github/stars/SnailSploit/Awesome-Snail-OSINT?style=flat-square)](https://github.com/SnailSploit/Awesome-Snail-OSINT/stargazers) [![Open issues](https://img.shields.io/github/issues/SnailSploit/Awesome-Snail-OSINT?style=flat-square)](https://github.com/SnailSploit/Awesome-Snail-OSINT/issues) [![Documentation checks](https://github.com/SnailSploit/Awesome-Snail-OSINT/actions/workflows/docs.yml/badge.svg)](https://github.com/SnailSploit/Awesome-Snail-OSINT/actions/workflows/docs.yml)
+**[OPEN THE LIVE ATLAS ↗](https://snail-osint-atlas.pages.dev/)** &nbsp;·&nbsp; [Investigation chains](https://snail-osint-atlas.pages.dev/#view=chains) &nbsp;·&nbsp; [Fieldcraft](https://snail-osint-atlas.pages.dev/#view=fieldcraft) &nbsp;·&nbsp; [Query & evidence lab](https://snail-osint-atlas.pages.dev/#view=lab)
 
-> **Start with a question, not a tool.** Built for security researchers, investigators, journalists, and defenders. A public search result is a lead—not proof of ownership, exposure, or authorization to test.
+[![Snail OSINT Atlas: forest-green investigation workspace, searchable source cards and a visual research path](docs/assets/atlas-desktop.png)](https://snail-osint-atlas.pages.dev/)
+
+| Indexed sources | Investigation chains | Fieldcraft notes | Scoped query recipes |
+| :---: | :---: | :---: | :---: |
+| **416** | **10** | **20** | **6** |
+
+Counts reflect the catalog when this preview was generated, not live-service verification. Imported legacy sources remain clearly marked **unreviewed**.
 
 ## The investigation atlas
 
-The interactive interface, source catalog, investigation chains, fieldcraft notes,
-and local caseboard all live in this repository on **main**.
+A working research interface, not just a reskinned README. The entire application,
+source catalog, guides and tests live in **this repository, on `main`**.
 
-**[Atlas interface and setup](ATLAS.md)** · **[Search guide](SEARCH_GUIDE.md)** · **[Evidence-first field guide](docs/field-guide.md)**
+| Workspace | What you can do |
+| --- | --- |
+| **Source atlas** | Search by source, input or output; filter by discipline, access and review status; switch card/list views; inspect source dossiers and their limitations. |
+| **Investigation chains** | Follow ordered research steps with expected outputs, common attribution traps, linked sources and fallback paths. |
+| **Fieldcraft** | Use source-linked techniques for chronology, provenance, independent corroboration and avoiding false matches. |
+| **Query & evidence lab** | Generate scoped domain/repository queries and create local SHA-256 integrity receipts. Queries are not executed automatically. |
+| **Caseboard** | Pin useful sources and chains; export the resulting research plan as Markdown or JSON. |
 
-```bash
-python3 scripts/build_atlas.py
-python3 -m http.server 8080 --directory _site
-```
+<details>
+<summary><strong>See an investigation chain in the actual interface</strong></summary>
 
-Open `http://localhost:8080` after building. Publication is separate from the repository merge;
-see [ATLAS.md](ATLAS.md) for the existing manual deployment workflow.
+[![An expanded investigation chain in Snail OSINT](docs/assets/atlas-chain.png)](https://snail-osint-atlas.pages.dev/#view=chains)
+
+</details>
+
+**Keyboard-first:** `/` focuses search, `Ctrl+K` / `Cmd+K` searches across collections,
+and `Escape` dismisses dialogs. Search state can be shared in the URL.
+
+**Local-first:** no analytics, remote fonts or automatic target queries. Pins stay in
+this browser; external source links and explicitly opened queries go to the selected provider.
+A file hash is an integrity check, not proof of authenticity or acquisition time.
+
+**[Open the live workspace](https://snail-osint-atlas.pages.dev/)** · [Architecture & local setup](ATLAS.md) · [Search guide](SEARCH_GUIDE.md) · [Contributing](CONTRIBUTING.md)
+
+---
 
 ## Start here
 
