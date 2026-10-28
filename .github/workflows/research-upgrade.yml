@@ -58,6 +58,24 @@ jobs:
                   p=pathlib.Path(name);p.parent.mkdir(parents=True,exist_ok=True);p.write_text(content,encoding='utf-8')
           apply('.github/execution-stage','cf14499e2f42123de9c5d6c7556250cdcec5c9a734a5f5dcb99b8a567005b177')
           apply('.github/research-stage','4b6f4017d69693c7370fd0a13abe85ce42cfc1d6ea5a14ab2466edd3f13ffd53')
+          # DAL's WebAsset contract canonicalizes FQDNs with one terminal period.
+          # Preserve exact scheme, hostname and port matching; never accept aliases.
+          p=pathlib.Path('server/synthesis.mjs');text=p.read_text()
+          old="site.origin!=='https://'+domain"
+          new="(site.protocol!=='https:'||site.hostname.replace(/\\.$/,'')!==domain||site.port)"
+          assert text.count(old)==1
+          p.write_text(text.replace(old,new))
+          p=pathlib.Path('tests/synthesis.test.mjs')
+          p.write_text(p.read_text()+'''\ntest('DAL canonical single terminal DNS dot matches only the same HTTPS origin',async()=>{
+            for(const [site,expected] of [['https://example.com.','ok'],['https://example.com.:443/','ok'],['https://example.com..','error'],['https://example.com.evil.com.','error'],['http://example.com.','error'],['https://example.com.:444','error'],['https://user@example.com.','error']]){
+              const raw=google('example.com');raw.statements[0].source.web.site=site;
+              const result=await collectApps(['example.com'],{fetcher:async()=>Response.json(raw)});
+              assert.equal(result.observations[0].outcome,expected,site);
+            }
+          });\n''')
+          p=pathlib.Path('docs/synthesis.md');text=p.read_text()
+          text=text.replace('Provider retrieval time is not statement-issuance time.','Provider source identity is checked against the exact HTTPS host and port; the single terminal DNS period used by the DAL WebAsset canonical form is normalized. Aliases, suffix matches, other schemes and non-default ports are rejected.\n\nProvider retrieval time is not statement-issuance time.')
+          p.write_text(text)
           for directory in ('.github/execution-stage','.github/research-stage'):shutil.rmtree(directory)
           for name in ('execution-upgrade.yml','research-upgrade.yml','research-source-snapshot.yml'):
               pathlib.Path('.github/workflows',name).unlink(missing_ok=True)
