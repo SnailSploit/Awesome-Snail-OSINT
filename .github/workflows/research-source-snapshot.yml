@@ -1,0 +1,21 @@
+name: Research source snapshot
+on:
+  push:
+    branches: [main]
+    paths: [.github/workflows/research-source-snapshot.yml]
+permissions:
+  contents: read
+jobs:
+  snapshot:
+    runs-on: ubuntu-latest
+    timeout-minutes: 3
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          persist-credentials: false
+      - run: git archive --format=tar.gz --output=/tmp/research-source.tar.gz HEAD
+      - uses: actions/upload-artifact@v4
+        with:
+          name: research-source
+          path: /tmp/research-source.tar.gz
+          retention-days: 3
