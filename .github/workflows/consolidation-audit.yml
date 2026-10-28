@@ -1,0 +1,45 @@
+name: Consolidation audit
+on:
+  push:
+    branches: [claude/improve-code-quality-7yl4o]
+    paths: [.github/workflows/consolidation-audit.yml]
+permissions:
+  contents: read
+jobs:
+  inspect:
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+          persist-credentials: false
+      - name: Preserve branch history and inspect the merge
+        shell: bash
+        run: |
+          set -euo pipefail
+          mkdir -p /tmp/osint-consolidation
+          git bundle create /tmp/osint-consolidation/source.bundle --all
+          git show-ref > /tmp/osint-consolidation/refs.txt
+          git config user.name 'github-actions[bot]'
+          git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
+          git checkout --detach 22ca4ba3c6b37efd2e3fea2e965dca58a6c14228
+          set +e
+          git merge --no-commit --no-ff 26aa3615445104c9e7594a2bdf36c07ec6f388e6
+          status=$?
+          set -e
+          if [ "$status" -gt 1 ]; then exit "$status"; fi
+          git diff --name-only --diff-filter=U | tee /tmp/osint-consolidation/conflicts.txt
+          cp README.md /tmp/osint-consolidation/README.merge.md
+          python3 - <<'PY'
+          import pathlib, re
+          text = pathlib.Path('README.md').read_text()
+          for index, block in enumerate(re.findall(r'^<<<<<<< .*?^>>>>>>> .*?$', text, re.M | re.S), 1):
+              print(f'--- CONFLICT {index} ---')
+              print(block)
+          PY
+      - uses: actions/upload-artifact@v4
+        with:
+          name: osint-consolidation-inputs
+          path: /tmp/osint-consolidation/
+          retention-days: 3
