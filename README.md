@@ -6,6 +6,21 @@
 
 > **Start with a question, not a tool.** Built for security researchers, investigators, journalists, and defenders. A public search result is a lead—not proof of ownership, exposure, or authorization to test.
 
+## The investigation atlas
+
+The interactive interface, source catalog, investigation chains, fieldcraft notes,
+and local caseboard all live in this repository on **main**.
+
+**[Atlas interface and setup](ATLAS.md)** · **[Search guide](SEARCH_GUIDE.md)** · **[Evidence-first field guide](docs/field-guide.md)**
+
+```bash
+python3 scripts/build_atlas.py
+python3 -m http.server 8080 --directory _site
+```
+
+Open `http://localhost:8080` after building. Publication is separate from the repository merge;
+see [ATLAS.md](ATLAS.md) for the existing manual deployment workflow.
+
 ## Start here
 
 | Your task | Reference |
@@ -852,6 +867,9 @@ services.certificate:"example.com"
 ---
 
 ## Training and Learning
+
+- [Trace Labs](https://www.tracelabs.org/) - Community OSINT training and challenges; legacy listing, availability not reverified.
+- [GeoGuessr](https://www.geoguessr.com/) - Geolocation practice; legacy listing, access terms not reverified.
 
 - [Hack The Box](https://www.hackthebox.com)
 - [TryHackMe](https://tryhackme.com)
