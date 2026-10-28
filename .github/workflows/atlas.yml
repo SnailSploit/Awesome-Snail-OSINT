@@ -1,0 +1,49 @@
+name: Atlas quality
+on:
+  pull_request:
+  push:
+    branches: [main]
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  atlas:
+    runs-on: ubuntu-latest
+    timeout-minutes: 12
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+      - name: Validate and build the complete catalog
+        run: python3 scripts/build_atlas.py
+      - name: Python regression tests
+        run: python3 -m unittest discover -s tests -v
+      - name: JavaScript regression tests
+        run: |
+          node --check site/app.mjs
+          node --test tests/core.test.mjs
+      - name: Install browser test dependencies
+        run: |
+          python3 -m pip install playwright==1.57.0
+          python3 -m playwright install --with-deps chromium
+      - name: Real-browser interaction tests
+        run: python3 scripts/browser_smoke.py
+      - name: Upload deployable static site
+        if: success()
+        uses: actions/upload-artifact@v4
+        with:
+          name: snail-osint-atlas
+          path: _site/
+          include-hidden-files: true
+      - name: Upload browser evidence
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: atlas-browser-evidence
+          path: .browser-test/
+          include-hidden-files: true
+          if-no-files-found: warn
