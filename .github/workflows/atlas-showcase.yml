@@ -1,0 +1,135 @@
+name: Refresh Atlas showcase
+on:
+  workflow_dispatch:
+  push:
+    branches: [main]
+    paths:
+      - scripts/update_showcase.py
+      - .github/workflows/atlas-showcase.yml
+permissions:
+  contents: read
+concurrency:
+  group: atlas-showcase
+  cancel-in-progress: false
+jobs:
+  showcase:
+    if: github.repository == 'SnailSploit/Awesome-Snail-OSINT' && github.ref == 'refs/heads/main'
+    runs-on: ubuntu-latest
+    timeout-minutes: 12
+    permissions:
+      contents: write
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          persist-credentials: false
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+      - name: Build and validate the actual application
+        run: |
+          python3 scripts/check_docs.py
+          python3 scripts/build_atlas.py
+          python3 -m unittest discover -s tests -v
+          node --check site/app.mjs
+          node --test tests/core.test.mjs
+      - name: Install browser test dependencies
+        run: |
+          python3 -m pip install playwright==1.57.0
+          python3 -m playwright install --with-deps chromium
+      - name: Run full interaction checks and capture real UI previews
+        run: python3 scripts/browser_smoke.py
+      - name: Verify the public deployment and capture its interface
+        run: |
+          python3 - <<'PY'
+          import json
+          from pathlib import Path
+          from urllib.request import urlopen, Request
+          from playwright.sync_api import sync_playwright, expect
+          base = 'https://snail-osint-atlas.pages.dev/'
+          out = Path('.browser-test')
+          with urlopen(Request(base + 'data.json', headers={'User-Agent': 'SnailOSINT-deployment-check/1.0'}), timeout=30) as response:
+              assert response.status == 200
+              data = json.load(response)
+          assert len(data['resources']) >= 400
+          assert len(data['chains']) == 10
+          assert len(data['fieldcraft']) == 20
+          errors = []
+          requests = []
+          with sync_playwright() as p:
+              browser = p.chromium.launch()
+              page = browser.new_page(viewport={'width': 1440, 'height': 1120}, device_scale_factor=1)
+              page.on('pageerror', lambda e: errors.append(str(e)))
+              page.on('request', lambda r: requests.append(r.url))
+              response = page.goto(base, wait_until='networkidle', timeout=60000)
+              assert response.status == 200
+              page.get_by_role('button', name='Inspect crt.sh', exact=True).wait_for()
+              expect(page.locator('.card')).to_have_count(24)
+              page.screenshot(path=str(out / 'atlas-live.png'))
+              page.locator('#search').fill('certificate')
+              assert page.locator('.card').count() > 0
+              page.locator('.navitem[data-view="chains"]').click()
+              expect(page.locator('.chaincard')).to_have_count(10)
+              page.locator('.navitem[data-view="fieldcraft"]').click()
+              expect(page.locator('.craftcard')).to_have_count(20)
+              page.locator('.navitem[data-view="lab"]').click()
+              page.locator('#queryInput').fill('example.com')
+              page.locator('#generateQueries').click()
+              expect(page.locator('.queryrow')).to_have_count(4)
+              assert not errors, errors
+              assert all(u.startswith(base) for u in requests), requests
+              browser.close()
+          report = {'url': base, 'http': 200, 'counts': data['meta']['counts'], 'browser_errors': errors, 'automatic_external_requests': False, 'checks': ['catalog', 'search', 'chains', 'fieldcraft', 'query-generation']}
+          (out / 'live-verification.json').write_text(json.dumps(report, indent=2))
+          print(json.dumps(report, indent=2))
+          PY
+      - name: Generate the README showcase while preserving every directory entry
+        run: |
+          python3 scripts/update_showcase.py
+          python3 scripts/check_docs.py
+          python3 scripts/build_atlas.py
+          python3 - <<'PY'
+          import subprocess
+          from pathlib import Path
+          from scripts.build_atlas import import_legacy
+          old = subprocess.check_output(['git', 'show', 'HEAD:README.md'], text=True)
+          new = Path('README.md').read_text()
+          assert [r['id'] for r in import_legacy(old, [])] == [r['id'] for r in import_legacy(new, [])]
+          print('PASS: all imported source IDs preserved in order')
+          PY
+      - name: Commit only the tested showcase files to unchanged main
+        env:
+          GH_TOKEN: ${{ github.token }}
+        shell: bash
+        run: |
+          set -euo pipefail
+          test "$(git ls-remote origin refs/heads/main | cut -f1)" = "$GITHUB_SHA"
+          git add README.md ATLAS.md docs/assets/atlas-desktop.png docs/assets/atlas-chain.png
+          if git diff --cached --quiet; then exit 0; fi
+          git diff --cached --check
+          python3 - <<'PY'
+          import subprocess
+          allowed = {'README.md', 'ATLAS.md', 'docs/assets/atlas-desktop.png', 'docs/assets/atlas-chain.png'}
+          changed = set(subprocess.check_output(['git', 'diff', '--cached', '--name-only'], text=True).splitlines())
+          assert changed <= allowed, changed
+          PY
+          git config user.name 'github-actions[bot]'
+          git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
+          git commit -m 'docs: showcase the live OSINT Atlas with real UI previews and launch links'
+          header="AUTHORIZATION: basic $(printf 'x-access-token:%s' "$GH_TOKEN" | base64 -w0)"
+          echo "::add-mask::$header"
+          git config --local http.https://github.com/.extraheader "$header"
+          trap 'git config --local --unset-all http.https://github.com/.extraheader || true' EXIT
+          git push origin HEAD:refs/heads/main
+          printf '## Live Atlas\n\nhttps://snail-osint-atlas.pages.dev/\n\nShowcase commit: `%s`\n' "$(git rev-parse HEAD)" >> "$GITHUB_STEP_SUMMARY"
+      - name: Keep browser and deployment evidence
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: atlas-live-showcase
+          path: .browser-test/
+          include-hidden-files: true
+          if-no-files-found: warn
+          retention-days: 14
