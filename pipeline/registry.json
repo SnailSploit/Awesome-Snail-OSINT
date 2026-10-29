@@ -1,0 +1,17 @@
+{
+  "schemaVersion": 1,
+  "description": "Declared OSINT specialist adapters. Only implemented entries are executable; import-only entries do not query a provider.",
+  "tools": [
+    {"id":"telegram-public-export","status":"implemented","mode":"local-import","inputs":["telegram-public-json"],"outputs":["url","domain","ip","email"]},
+    {"id":"telegram-bot-export","status":"implemented","mode":"local-import","inputs":["telegram-personal-chat-json","bot-handle"],"outputs":["url","domain","ip","email"],"caveat":"Unverified bot claims; never automatically queried"},
+    {"id":"telegram-public-client","status":"implemented-optional","mode":"local-read-only","inputs":["public-channel-handle"],"outputs":["telegram-public-json"],"requirements":["Telethon","TG_API_ID","TG_API_HASH","local session"]},
+    {"id":"jar-static","status":"implemented","mode":"local-static","inputs":["jar-file"],"outputs":["jar-sha256","domain","url","email","package-list"]},
+    {"id":"shodan-json","status":"implemented","mode":"local-import","inputs":["shodan-api-json"],"outputs":["ip","domain","cert-sha256"],"caveat":"Import only; Shodan API credentials not required by this pipeline"},
+    {"id":"hunter-json","status":"implemented","mode":"local-import","inputs":["hunter-domain-search-json"],"outputs":["email","domain","url"],"caveat":"Import only; Hunter API credentials not required by this pipeline"},
+    {"id":"gitleaks-report","status":"implemented","mode":"local-import","inputs":["gitleaks-json-report"],"outputs":["redacted-secret-finding"],"caveat":"Requires separately authorized scanning; import never runs secret verification"},
+    {"id":"atlas-evidence-bundle","status":"implemented","mode":"verified-local-import","inputs":["atlas-investigation-json"],"outputs":["ip","domain"]},
+    {"id":"atlas-live-domain","status":"implemented","mode":"bounded-provider-queries","inputs":["domain"],"outputs":["ip","domain","asn"],"caveat":"Existing Atlas executor; explicit scope required"},
+    {"id":"atlas-live-mail","status":"implemented","mode":"bounded-provider-queries","inputs":["domain"],"outputs":["mail-dns-records"],"caveat":"DNS records only, not email discovery"},
+    {"id":"atlas-live-ip","status":"implemented","mode":"bounded-provider-queries","inputs":["ip"],"outputs":["ip","asn"],"caveat":"No port scans"}
+  ]
+}

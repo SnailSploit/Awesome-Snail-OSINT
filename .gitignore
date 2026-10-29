@@ -2,3 +2,6 @@ _site/
 __pycache__/
 *.pyc
 .browser-test/
+*.session
+*.session-journal
+.osint-local/

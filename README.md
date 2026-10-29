@@ -12,6 +12,26 @@
 
 Counts reflect the catalog when this preview was generated, not live-service verification. Imported legacy sources remain clearly marked **unreviewed**.
 
+## Specialist tool pipeline: aggregate, dedup, correlate
+
+**[Tool pipeline documentation](docs/tool-pipeline.md)** · [Adapter registry](pipeline/registry.json)
+
+The new **local-first CLI** combines Telegram public-channel exports, explicitly selected
+Telegram bot replies, static JAR inspection, Shodan and Hunter JSON exports, redacted
+Gitleaks reports, and existing Atlas domain/IP collection. It preserves native
+source references, removes duplicate typed identifiers, and reports exact overlaps
+between distinct upstreams.
+
+```bash
+node scripts/osint_pipeline.mjs --list-tools
+node scripts/osint_pipeline.mjs --telegram-public /tmp/channel.json @publicchannel --jar /tmp/app.jar --out /tmp/snail-case.json
+```
+
+Telegram's optional public-channel reader requires local Telethon credentials. Third-party
+bot queries are **not automatic**, imported bot claims are **unverified**, and none of these
+local tools run inside Cloudflare Pages. This is a tested CLI foundation, not a
+claim that hundreds of providers are live.
+
 ## Executable synthesis: connect evidence, reject false joins
 
 **[OPEN THE SYNTHESIS LAB](https://snail-osint-atlas.pages.dev/#view=synthesis)**
