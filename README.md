@@ -1,86 +1,68 @@
-# Snail OSINT / The Investigation Atlas
+# Snail OSINT
 
-### Follow the evidence. Not another wall of links.
+### Aggregate. Deduplicate. Correlate.
 
-**[OPEN THE LIVE ATLAS ↗](https://snail-osint-atlas.pages.dev/)** &nbsp;·&nbsp; [Investigation chains](https://snail-osint-atlas.pages.dev/#view=chains) &nbsp;·&nbsp; [Fieldcraft](https://snail-osint-atlas.pages.dev/#view=fieldcraft) &nbsp;·&nbsp; [Query & evidence lab](https://snail-osint-atlas.pages.dev/#view=lab)
+**An open-source OSINT tool pipeline, backed by a large source directory.**
+Give specialist tools the inputs they understand, combine their outputs, collapse duplicated identifiers without losing evidence, and surface cross-source pivots. The pipeline is the core project; the browser workspace is a companion.
 
-[![Snail OSINT Atlas: forest-green investigation workspace, searchable source cards and a visual research path](docs/assets/atlas-desktop.png)](https://snail-osint-atlas.pages.dev/)
+**[Run the tool pipeline](docs/tool-pipeline.md)** · [Tool registry](pipeline/registry.json) · [CLI source](scripts/osint_pipeline.mjs) · [Browse the original directory](#table-of-contents) · [Open the browser workspace](https://snail-osint-atlas.pages.dev/)
 
-| Indexed sources | Investigation chains | Fieldcraft notes | Scoped query recipes |
-| :---: | :---: | :---: | :---: |
-| **416** | **10** | **20** | **6** |
+## What actually runs
 
-Counts reflect the catalog when this preview was generated, not live-service verification. Imported legacy sources remain clearly marked **unreviewed**.
+| Component | Status | Scope |
+| --- | --- | --- |
+| **Tool pipeline** | **Tested local CLI** | Aggregates normalized identifiers, deduplicates entities while retaining source records, and reports exact cross-source overlaps. |
+| **Telegram** | Import + optional live public-channel reader | Telegram Desktop public-channel exports; explicitly chosen bot-response exports marked unverified; bounded public-channel reads via local Telethon credentials. No automated third-party bot conversations. |
+| **JAR inspection** | Local static analysis | Extracts JAR metadata, package names and embedded identifiers without running Java code. Signing artifacts are listed, not authenticated. |
+| **Shodan / Hunter** | JSON import only | Consumes operator-supplied Shodan indexed-asset and Hunter domain-search exports. **No live API connectors yet.** |
+| **Gitleaks** | Redacted JSON import | Imports findings from separately authorized scans without copying credential values. Does not scan or validate tokens. |
+| **DNS / RDAP / routing** | Bounded live public-record lookups | Reuses the existing exact-domain/IP Atlas collector. Requires explicit scope confirmation; not a port scanner. |
+| **Source directory** | Browsable catalog | The original OSINT collection and curated dossiers. A listing is **not** a working tool integration or a verified-live source. |
+| **Browser workspace (Atlas)** | Live, separate frontend | Search source cards, inspect research chains, run existing bounded public-record workflows, and use the synthesis lab. It **does not execute the local specialist CLI**. |
 
-## Specialist tool pipeline: aggregate, dedup, correlate
+**Not yet implemented:** a general executable 300-tool registry, automated third-party Telegram bot queries, a browser-fingerprinting pack, live Shodan/Hunter queries, or a web UI that orchestrates local CLI tools. These are development targets, not shipped features.
 
-**[Tool pipeline documentation](docs/tool-pipeline.md)** · [Adapter registry](pipeline/registry.json)
+## Run the specialist pipeline
 
-The new **local-first CLI** combines Telegram public-channel exports, explicitly selected
-Telegram bot replies, static JAR inspection, Shodan and Hunter JSON exports, redacted
-Gitleaks reports, and existing Atlas domain/IP collection. It preserves native
-source references, removes duplicate typed identifiers, and reports exact overlaps
-between distinct upstreams.
+**Requirements:** Node.js 22+; Python 3.10+ for static JAR inspection. The baseline works with supplied files and does not require paid API credentials.
 
 ```bash
+# Inspect the registered tools and their execution modes
 node scripts/osint_pipeline.mjs --list-tools
-node scripts/osint_pipeline.mjs --telegram-public /tmp/channel.json @publicchannel --jar /tmp/app.jar --out /tmp/snail-case.json
+
+# Combine two real input sources into one evidence-linked case
+node scripts/osint_pipeline.mjs \
+  --telegram-public channel.json @publicchannel \
+  --jar application.jar \
+  --out case.json
+
+# Reuse the existing scoped domain collector
+node scripts/osint_pipeline.mjs \
+  --live-domain example.org --confirm-scope --out domain-case.json
 ```
 
-Telegram's optional public-channel reader requires local Telethon credentials. Third-party
-bot queries are **not automatic**, imported bot claims are **unverified**, and none of these
-local tools run inside Cloudflare Pages. This is a tested CLI foundation, not a
-claim that hundreds of providers are live.
+Inputs are supplied by the investigator; the example filenames are placeholders, **not included investigation data**. Output includes typed entities, original source references, duplicate counts, overlaps, and per-tool execution status. A shared identifier is an investigative lead—not proof of common ownership or identity.
 
-## Executable synthesis: connect evidence, reject false joins
+See the [complete tool-pipeline guide](docs/tool-pipeline.md) for Telegram public-channel collection, bot-export requirements, offline imports, privacy boundaries, and test commands. The [adapter registry](pipeline/registry.json) identifies which entries are runnable, optional, or import-only.
 
-**[OPEN THE SYNTHESIS LAB](https://snail-osint-atlas.pages.dev/#view=synthesis)**
+## The source directory and browser workspace
 
-Three implemented research combinations now produce inspectable findings, rejected connections,
-rule identifiers and exportable evidence reports:
+The original awesome-list resource directory is preserved below. Its current Atlas catalog contains **416 indexed entries**, including imported legacy links that have not been individually reviewed. These are **resources, not 416 integrations**. It also provides investigation chains, fieldcraft notes, and scoped query recipes.
 
-| Combination | What actually runs |
-| --- | --- |
-| **Trust after the transition** | Collect Android association statements for up to four domains; compare exact app/signing identities and imported before/after snapshots. |
-| **Independent reports, shared ancestry?** | Analyze local text and XMP, subtract template controls, and test combined lineage/text evidence. Local PDF extractor included. |
-| **Different brands, shared operations?** | Combine namespaced advertising declarations with repeated release transitions and controls from imported or locally collected histories. |
+**[Browse the OSINT workspace](https://snail-osint-atlas.pages.dev/)** · [Research chains](https://snail-osint-atlas.pages.dev/#view=chains) · [Existing live DNS/IP investigations](https://snail-osint-atlas.pages.dev/#view=run) · [Synthesis lab](https://snail-osint-atlas.pages.dev/#view=synthesis) · [Frontend documentation](ATLAS.md)
 
-No automatic target queries, fake live results or ownership verdicts. Synthetic challenges are explicitly
-labelled and use the same rules as real evidence. Historical collection and real-world novelty validation
-are not automatic. [Rules, input schemas, collectors and limits](docs/synthesis.md).
+[![Snail OSINT browser workspace showing its source catalog](docs/assets/atlas-desktop.png)](https://snail-osint-atlas.pages.dev/)
 
-**[Live public-record runner](https://snail-osint-atlas.pages.dev/#view=run)** also executes bounded DNS,
-registration and routing workflows with provenance-linked graphs and actual observation exports.
-These basic workflows are infrastructure context, not a claim of unique intelligence. [Runner details](docs/execution.md).
+**Why keep Atlas?** It is a useful catalog browser and research companion. It isn't the identity of the repository, and a hosted page must never imply that local Telegram, artifact-inspection, or third-party API adapters ran when they did not. Once a proper pipeline UI exists, this workspace can become a view over its results.
 
-## The investigation atlas
+## Development priorities
 
-A working research interface, not just a reskinned README. The entire application,
-source catalog, guides and tests live in **this repository, on `main`**.
+1. Improve adapter contracts and failure reporting without flattening specialists into generic search.
+2. Add genuinely executable packs for public web fingerprints, repositories, email discovery, and IP research; distinguish passive, authenticated, local, and active collectors.
+3. Expand Telegram public-content coverage and safely import independently sourced evidence.
+4. Add bounded downstream pivots and source-aware correlation once each collector is tested.
 
-| Workspace | What you can do |
-| --- | --- |
-| **Source atlas** | Search by source, input or output; filter by discipline, access and review status; switch card/list views; inspect source dossiers and their limitations. |
-| **Investigation chains** | Follow ordered research steps with expected outputs, common attribution traps, linked sources and fallback paths. |
-| **Fieldcraft** | Use source-linked techniques for chronology, provenance, independent corroboration and avoiding false matches. |
-| **Query & evidence lab** | Generate scoped domain/repository queries and create local SHA-256 integrity receipts. Queries are not executed automatically. |
-| **Caseboard** | Pin useful sources and chains; export the resulting research plan as Markdown or JSON. |
-
-<details>
-<summary><strong>See an investigation chain in the actual interface</strong></summary>
-
-[![An expanded investigation chain in Snail OSINT](docs/assets/atlas-chain.png)](https://snail-osint-atlas.pages.dev/#view=chains)
-
-</details>
-
-**Keyboard-first:** `/` focuses search, `Ctrl+K` / `Cmd+K` searches across collections,
-and `Escape` dismisses dialogs. Search state can be shared in the URL.
-
-**Local-first:** no analytics, remote fonts or automatic target queries. Pins stay in
-this browser; external source links and explicitly opened queries go to the selected provider.
-A file hash is an integrity check, not proof of authenticity or acquisition time.
-
-**[Open the live workspace](https://snail-osint-atlas.pages.dev/)** · [Architecture & local setup](ATLAS.md) · [Search guide](SEARCH_GUIDE.md) · [Contributing](CONTRIBUTING.md)
+**Repository policy:** one repository, `main` as the integration branch, preserved original list, source-linked findings, no fabricated attribution, and no credential dumps.
 
 ---
 
