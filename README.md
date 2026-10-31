@@ -872,6 +872,7 @@ services.certificate:"example.com"
 - [SnapRipper (GitHub)](https://github.com/N0ps/snapripper)
 - [FindSnapChat](https://www.findsnapchat.com)
 - [Snapchat Accounts Search](https://www.snapcodes.com)
+- [SnapDataHub (public profile and Spotlight stats)](https://snapdatahub.com/)
 
 ---
 
