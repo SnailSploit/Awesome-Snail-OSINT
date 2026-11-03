@@ -509,6 +509,8 @@ The original awesome-list resource directory is preserved below. Its current Atl
 - [Username Check](https://www.usernamecheck.com)
 - [Consensus OSINT](https://github.com/OSINT-Experts-Society/Consensus-OSINT) — Command-line username, email and phone lookup with enriched results and evidence graphs.
 - [Socialscan](https://socialscan.com)
+- [twtData (X/Twitter follower, following and tweet export; free trends archive)](https://twtdata.com/)
+- [TKMetrics (TikTok creator stats and average views)](https://tkmetrics.com/)
 
 ---
 
