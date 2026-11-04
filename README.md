@@ -218,6 +218,7 @@ The original awesome-list resource directory is preserved below. Its current Atl
 - [Saymine](https://saymine.com)
 - [Cybercrime Intelligence Tools](https://cybercrimeintelligence.com/)
 - [Opsis (Reverse Email Lookup)](https://useopsis.com/)
+- [Have I Been Ransomed? (email, phone or domain exposure in ransomware leaks, stealer logs and breaches)](https://haveibeenransom.com/)
 
 ---
 
@@ -836,6 +837,7 @@ services.certificate:"example.com"
 - [Dark Tracer](https://www.darktracer.com)
 - [Nql7pv7k32nnqor2.onion](http://nql7pv7k32nnqor2.onion)
 - [Onion.Live](http://onion.live)
+- [Breach House (search ransomware leak sites, stealer logs, breaches and leads by company, domain or email)](https://breach.house/)
 
 ---
 
