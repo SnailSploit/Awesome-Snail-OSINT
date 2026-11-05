@@ -574,6 +574,7 @@ The original awesome-list resource directory is preserved below. Its current Atl
 - [Censys](https://censys.io)
 - [Shodan](https://www.shodan.io)
 - [PublicWWW](https://publicwww.com)
+- [Profundis: Subdomain and Infrastructure Search](https://profundis.io/)
 - [Wayback Machine](https://archive.org/web/)
 - [Library of Congress Web Archives](https://www.loc.gov/websites/)
 - [Carbon Dating The Web](https://carbondate.cs.odu.edu)
