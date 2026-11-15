@@ -583,6 +583,7 @@ The original awesome-list resource directory is preserved below. Its current Atl
 - [looot-techstack: Website Technology Lookup Across Providers](https://github.com/loootai/looot-techstack)
 - [SpyOnWeb](https://spyonweb.com)
 - [Spoof Me: Browser Identity Switcher for Sock Puppets](https://spoof-me.com/)
+- [GetYouTubeTranscript: YouTube Video Transcripts and Channel Video Lists](https://getyoutubetranscript.com)
 
 ---
 
