@@ -178,6 +178,7 @@ The original awesome-list resource directory is preserved below. Its current Atl
 - [Blacklight – The Markup](https://themarkup.org/blacklight)
 - [Render-tron](https://render-tron.appspot.com)
 - [cl0q](https://cl0q.com)
+- [Whatoblock (honeypot-observed scanner and botnet IP lookup)](https://whatoblock.com/)
 
 ---
 
