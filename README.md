@@ -179,6 +179,7 @@ The original awesome-list resource directory is preserved below. Its current Atl
 - [Render-tron](https://render-tron.appspot.com)
 - [cl0q](https://cl0q.com)
 - [Whatoblock (honeypot-observed scanner and botnet IP lookup)](https://whatoblock.com/)
+- [VibeShield (passive 116-check web app security headers, client JS secret & BaaS exposure lookup)](https://vibe-checker.appwrite.network)
 
 ---
 
