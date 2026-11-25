@@ -585,6 +585,7 @@ The original awesome-list resource directory is preserved below. Its current Atl
 - [SpyOnWeb](https://spyonweb.com)
 - [Spoof Me: Browser Identity Switcher for Sock Puppets](https://spoof-me.com/)
 - [GetYouTubeTranscript: YouTube Video Transcripts and Channel Video Lists](https://getyoutubetranscript.com)
+- [MyIPScan VPN Leak Test: Check a VPN for IP, DNS, WebRTC and IPv6 Leaks](https://myipscan.net/tools/vpn-leak-test)
 
 ---
 
