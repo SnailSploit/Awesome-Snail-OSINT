@@ -508,6 +508,7 @@ The original awesome-list resource directory is preserved below. Its current Atl
 - [Namevine](https://namevine.com)
 - [WhatsMyName Web](https://whatsmyname.app)
 - [Username Check](https://www.usernamecheck.com)
+- [ClearCaption](https://github.com/Andrii2203/clearcaption-youtube-transcript) — YouTube transcripts, SRT/VTT subtitles and timestamped translation for videos, channels and playlists; works from cloud servers and as an MCP server.
 - [Consensus OSINT](https://github.com/OSINT-Experts-Society/Consensus-OSINT) — Command-line username, email and phone lookup with enriched results and evidence graphs.
 - [Socialscan](https://socialscan.com)
 
